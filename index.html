@@ -1,110 +1,98 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>CarnetDeContact</title>
-    <link rel="stylesheet" href="style.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@700&display=swap" rel="stylesheet">
-</head>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="styleQuery.css">
+  </head>
 
-<body>
-    <!-- Mon header nav-->
-
+  <body>
     <header>
-        <p class="nav">
-            <span class="title">Répertoire des contacts</span>
-        </p>
+      <p class="nav">
+        <span class="title">Répertoire des contacts</span>
+      </p>
     </header>
-
-    <!-- Le Formulaire des contacts du carnet de contacts -->
-
     <div class="Repertoire">
         <section class="formulaire">
-            <h4 class="form-title">Formulaire de contacts</h4>
-            <form action="" method="get">
-                <label for="Prenom">Prénom</label>
-                <input type="text" id="Prenom" />
+          <p class="form-title">Formulaire de contact</p>
+          <form action="" method="get">
+            <label for="Prenom">Prénom</label>
+            <input type="text" id="Prenom" />
 
-                <label for="Nom">Nom</label>
-                <input type="text" id="Nom" />
+            <label for="Nom">Nom</label>
+            <input type="text" id="Nom" />
 
-                <label for="Telephone">Téléphone</label>
-                <input type="text" id="Telephone" />
+            <label for="Telephone">Téléphone</label>
+            <input type="text" id="Telephone" />
 
-                <label for="Groupe">Groupe</label>
-                <input type="text" id="Groupe" />
+            <label for="Groupe">Groupe</label>
+            <input type="text" id="Groupe" />
 
-                <label for="Email">Email</label>
-                <input type="text" id="Email" />
+            <label for="Email">Email</label>
+            <input type="text" id="Email" />
 
-                <label for="Bio">Bio</label>
-                <input type="text" id="Bio" />
-                <div class="capture">
-                    <p>Déposez votre capture ici <input type="file" id="photo" /></p>
-                </div>
-                <button class="creer">Créer</button>
-                <button class="renit">Rénit</button>
-            </form>
+            <label for="Bio">Bio</label>
+            <input type="text" id="Bio" />
+            <div class="dropBox">
+              <p>Déposez la photo ici <input type="file" id="uploadFile" /></p>
+            </div>
+            <button class="creer">Créer</button>
+            <button class="renit">Rénit</button>
+          </form>
         </section>
 
-        <!-- Listes des contacts du carnet de contacts -->
+        <section class="list">
+          <p class="list-title">Liste des contacts</p>
+          <div class="list__contact">
+            <div class="photo">
+              <img src="images/henri-meilhac-156026-1024x786.jpg" alt="" />
+            </div>
 
-        <section class="listes-client">
-            <div>
-                <p class="Titre-Titre">Liste des contacts</p>
+            <div class="description">
+              <p>id</p>
+              <span>Tel</span>
+              <p>
+                Lorem ipsum dolor, sit amet consectetur adipisicing elit.
+                Architecto tempora voluptates ullam ab error similique in
+                voluptas!
+              </p>
+            </div>
+          </div>
+          
+          <div class="list__contact">
+            <div class="photo">
+              <img src="images/IMG_20231115_201602_227.jpg" alt="" />
+            </div>
 
-                <div class="listes_profils">
-                    <div class="statut">
-                        <img src="mes-images/victoire.jpeg" alt="" />
-                    </div>
-                    <div class="répresentation">
-                        <h4>prenom Nom - Groupe</h4>
-                        <span>Teléphone</span>
-                        <p>
-                            Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-                            Architecto tempora voluptates ullam ab error similique in
-                            voluptas!
-                        </p>
-                    </div>
-                </div>
+            <div class="description">
+              <p>id</p>
+              <span>Tel</span>
+              <p>
+                Lorem ipsum dolor sit amet consectetur, adipisicing elit.
+                Quisquam veniam, similique ipsam animi tempore repudiandae
+                cumque!
+              </p>
+            </div>
+          </div>
+          
+          <div class="list__contact">
+            <div class="photo">
+              <img src="images/Snapchat-1659989262.jpg" alt=""/>
+            </div>
 
-                <div class="listes_profils">
-                    <div class="statut">
-                        <img src="mes-images/victoire.jpeg" alt="" />
-                    </div>
-
-                    <div class="répresentation">
-                        <h4>prenom Nom - Groupe</h4>
-                        <span>Teléphone</span>
-                        <p>
-                            Lorem ipsum dolor sit amet consectetur, adipisicing elit.
-                            Quisquam veniam, similique ipsam animi tempore repudiandae
-                            cumque!
-                        </p>
-                    </div>
-                </div>
-
-                <div class="listes_profils">
-                    <div class="statut">
-                        <img src="mes-images/victoire.jpeg" alt="" />
-                    </div>
-
-                    <div class="répresentation">
-                        <h4>prenom Nom - Groupe</h4>
-                        <span>Teléphone</span>
-                        <p>
-                            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Aut
-                            velit nemo maiores modi repudiandae in labore ad excepturi
-                            reprehenderit!
-                        </p>
-                    </div>
-                </div>
+            <div class="description">
+              <p>id</p>
+              <span>Tel</span>
+              <p>
+                Lorem ipsum dolor, sit amet consectetur adipisicing elit. Aut
+                velit nemo maiores modi repudiandae in labore ad excepturi
+                reprehenderit!
+              </p>
+            </div>
+          </div>
         </section>
     </div>
-</body>
-
+  </body>
 </html>

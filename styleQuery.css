@@ -1,0 +1,78 @@
+@media screen and (orientation: portrait) {
+  header {
+    text-align: center;
+  }
+  .Repertoire {
+    display: flex;
+    flex-wrap: wrap;
+    border: none;
+  }
+  .Repertoire p {
+    width: 100%;
+  }
+  .Repertoire .formulaire {
+    width: 100vw;
+    height: auto;
+    display: inline-block;
+    padding-bottom: 20px;
+  }
+  .Repertoire button {
+    justify-self: center;
+    width: 40%;
+    text-align: left;
+  }
+  .Repertoire .list {
+    width: 100vw;
+    height: auto;
+    margin-top: 20px;
+    padding-bottom: 4px;
+  }
+  .Repertoire .list .list__contact {
+    display: flex;
+    flex-wrap: wrap;
+    font-size: 1.3em;
+  }
+  .Repertoire .list .list__contact .photo {
+    width: 90%;
+    justify-content: center;
+    margin: 15px auto;
+    padding: 0 0 0 50px;
+  }
+  .Repertoire .list .list__contact .photo img {
+    height: 25vh;
+  }
+  .Repertoire .list .list__contact .description {
+    width: 100%;
+  }
+}
+@media screen and (orientation: paysage) {
+  .Repertoire {
+    height: auto;
+  }
+  .list {
+    width: 100vw;
+    height: auto;
+    margin-top: 20px;
+    padding-bottom: 4px;
+    overflow: scroll;
+  }
+  .list .list__contact {
+    display: flex;
+    flex-wrap: wrap;
+    font-size: 1.3em;
+  }
+  .list .list__contact .photo {
+    width: 90%;
+    height: 70vh;
+    justify-content: center;
+    margin: 15px auto;
+    padding: 0 0 0 50px;
+  }
+  .list .list__contact .photo img {
+    width: 90%;
+    height: 40vh;
+  }
+  .list .list__contact .description {
+    width: 100%;
+  }
+}/*# sourceMappingURL=styleQuery.css.map */
