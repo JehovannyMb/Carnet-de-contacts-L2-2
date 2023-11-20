@@ -5,10 +5,106 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CarnetDeContact</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@700&display=swap" rel="stylesheet">
 </head>
 
 <body>
+    <!-- Mon header nav-->
 
+    <header>
+        <p class="nav">
+            <span class="title">Répertoire des contacts</span>
+        </p>
+    </header>
+
+    <!-- Le Formulaire des contacts du carnet de contacts -->
+
+    <div class="Repertoire">
+        <section class="formulaire">
+            <h4 class="form-title">Formulaire de contacts</h4>
+            <form action="" method="get">
+                <label for="Prenom">Prénom</label>
+                <input type="text" id="Prenom" />
+
+                <label for="Nom">Nom</label>
+                <input type="text" id="Nom" />
+
+                <label for="Telephone">Téléphone</label>
+                <input type="text" id="Telephone" />
+
+                <label for="Groupe">Groupe</label>
+                <input type="text" id="Groupe" />
+
+                <label for="Email">Email</label>
+                <input type="text" id="Email" />
+
+                <label for="Bio">Bio</label>
+                <input type="text" id="Bio" />
+                <div class="capture">
+                    <p>Déposez votre capture ici <input type="file" id="photo" /></p>
+                </div>
+                <button class="creer">Créer</button>
+                <button class="renit">Rénit</button>
+            </form>
+        </section>
+
+        <!-- Listes des contacts du carnet de contacts -->
+
+        <section class="listes-client">
+            <div>
+                <p class="Titre-Titre">Liste des contacts</p>
+
+                <div class="listes_profils">
+                    <div class="statut">
+                        <img src="mes-images/victoire.jpeg" alt="" />
+                    </div>
+                    <div class="répresentation">
+                        <h4>prenom Nom - Groupe</h4>
+                        <span>Teléphone</span>
+                        <p>
+                            Lorem ipsum dolor, sit amet consectetur adipisicing elit.
+                            Architecto tempora voluptates ullam ab error similique in
+                            voluptas!
+                        </p>
+                    </div>
+                </div>
+
+                <div class="listes_profils">
+                    <div class="statut">
+                        <img src="mes-images/victoire.jpeg" alt="" />
+                    </div>
+
+                    <div class="répresentation">
+                        <h4>prenom Nom - Groupe</h4>
+                        <span>Teléphone</span>
+                        <p>
+                            Lorem ipsum dolor sit amet consectetur, adipisicing elit.
+                            Quisquam veniam, similique ipsam animi tempore repudiandae
+                            cumque!
+                        </p>
+                    </div>
+                </div>
+
+                <div class="listes_profils">
+                    <div class="statut">
+                        <img src="mes-images/victoire.jpeg" alt="" />
+                    </div>
+
+                    <div class="répresentation">
+                        <h4>prenom Nom - Groupe</h4>
+                        <span>Teléphone</span>
+                        <p>
+                            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Aut
+                            velit nemo maiores modi repudiandae in labore ad excepturi
+                            reprehenderit!
+                        </p>
+                    </div>
+                </div>
+        </section>
+    </div>
 </body>
 
 </html>
