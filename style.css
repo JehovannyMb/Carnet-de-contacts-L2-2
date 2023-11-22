@@ -35,7 +35,7 @@ header .nav .title {
 .Repertoire .formulaire {
   width: 45%;
   height: 85vh;
-  border: dashed 1px #0880D6;
+  border: 1px solid #b5b2b2;
 }
 .Repertoire .formulaire .form-title {
   width: 100%;
@@ -59,7 +59,8 @@ header .nav .title {
   height: 45px;
 }
 .Repertoire .formulaire form #Bio {
-  height: 100px;
+  height: 100px ;
+
 }
 .Repertoire .formulaire form .dropBox {
   width: 98%;
@@ -67,7 +68,7 @@ header .nav .title {
   margin: 20px auto;
   position: relative;
   text-align: center;
-  border: dashed 1px;
+  border: dashed 1px #918585;
   left: -5px;
 }
 .Repertoire .formulaire form .dropBox p {
@@ -98,7 +99,6 @@ header .nav .title {
 .Repertoire .list {
   width: 55%;
   height: 65vh;
-  border: dashed 1px #0880D6;
   display: flex;
   flex-wrap: wrap;
 }
@@ -115,7 +115,7 @@ header .nav .title {
   display: flex;
   width: 100%;
   padding: 10px 20px;
-  border-bottom: solid 1px;
+  border: 1px solid #C4C4C4;
 }
 .Repertoire .list .list__contact .photo {
   width: 30%;
@@ -131,3 +131,8 @@ header .nav .title {
 .Repertoire .list .list__contact .description p {
   padding: 15px 0;
 }/*# sourceMappingURL=style.css.map */
+.list_btn{
+  display: flex;
+  flex-direction: row;
+  height: 20px;
+}
