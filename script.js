@@ -22,16 +22,3 @@ bouttonCreer.addEventListener('click', function () {
 });
 addContact()
 
-// function showContacts() {
-
-// }
-
-
-
-// function saveData(newContact) {
-//     localStorage.setItem("contact", this.newContact);
-
-// }
-// function getData(newContact) {
-//     const getData = createElement('div');
-// }
