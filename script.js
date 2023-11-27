@@ -15,21 +15,16 @@ console.log(nom.value);
 
 
 bouttonCreer.addEventListener('click', function () {
-    if (telephone.value == "" || nom.value == "" || prenom.value == "" || groupe.value == "") {
-        validationPrenom()
-        validationNom()
-        validationTel()
-        validationGroupe()
-        validationEmail()
-        validationBio()
-    }
-    else {
+    if (validationAll() === true) {
         console.log(prenom.value);
         let tab = document.createElement('div');
         tab.innerHTML = dropBox.value + "\n" + prenom.value + nom.value + groupe.value + telephone.value + bio.value
 
         list.appendChild(tab);
         console.log(tab);
+    }
+    else {
+      console.log('error');
     }
 });
 
@@ -63,7 +58,7 @@ function validationPrenom() {
         if (item.value == "") {
             item.setAttribute('style', 'border: solid red;')
             prenomError.innerHTML = "<span style= 'color : red'>Veillez renseigner votre prenom</span>"
-
+            return false
         } else {
             if (item.value.length >= 3 && item.value.length <= 50) {
                 item.removeAttribute('style')
@@ -71,19 +66,19 @@ function validationPrenom() {
                 if (regex.test(item.value)) {
                     prenomError.innerHTML = ""
                     item.removeAttribute('style')
-
+                    return true
                 } else {
                     item.setAttribute('style', 'border: solid red;')
                     prenomError.innerHTML = "<span style= 'color : red'> Le caractères doivent être des lettres </span>"
                     item.value.innerHTML = ""
-
+                    return false
                 }
             } else {
                 item.setAttribute('style', 'border: solid red;')
                 prenomError.innerHTML = "<span style= 'color : red'> Le champ doit contenir entre 3 et 50 caractères</span>"
 
             }
-
+            return false
         }
 
 
@@ -106,7 +101,7 @@ function validationNom() {
         if (item.value == "") {
             item.setAttribute('style', 'border: solid red;')
             nomError.innerHTML = "<span style= 'color : red'>Veillez renseigner votre nom</span>"
-
+            return false
         } else {
             if (item.value.length >= 3 && item.value.length <= 50) {
                 item.removeAttribute('style')
@@ -114,19 +109,19 @@ function validationNom() {
                 if (regex.test(item.value)) {
                     nomError.innerHTML = ""
                     item.removeAttribute('style')
-
+                    return true
                 } else {
                     item.setAttribute('style', 'border: solid red;')
                     nomError.innerHTML = "<span style= 'color : red'> Le caractères doivent être des lettres </span>"
                     item.value.innerHTML = ""
-
+                    return false
                 }
             } else {
                 item.setAttribute('style', 'border: solid red;')
                 nomError.innerHTML = "<span style= 'color : red'> Le champ doit contenir entre 3 et 50 caractères</span>"
 
             }
-
+            return false
         }
 
     }
@@ -147,7 +142,7 @@ function validationTel() {
         if (item.value == "") {
             item.setAttribute('style', 'border: solid red;')
             telError.innerHTML = "<span style= 'color : red'>Veillez renseigner votre numéro de téléphone</span>"
-
+            return false
         } else {
             if (item.value.length == 10) {
                 item.removeAttribute('style')
@@ -155,19 +150,19 @@ function validationTel() {
                 if (regex.test(item.value)) {
                     telError.innerHTML = ""
                     item.removeAttribute('style')
-
+                    return true
                 } else {
                     item.setAttribute('style', 'border: solid red;')
                     telError.innerHTML = "<span style= 'color : red'> Le numero doit être un numéro national. Ex : 082.... ou 099...</span>"
                     item.value.innerHTML = ""
-
+                    return false
                 }
             } else {
                 item.setAttribute('style', 'border: solid red;')
                 telError.innerHTML = "<span style= 'color : red'> Le champ doit contenir 10 chiffres</span>"
 
             }
-
+            return false
         }
 
 
@@ -190,7 +185,7 @@ function validationGroupe() {
         if (item.value == "") {
             item.setAttribute('style', 'border: solid red;')
             groupeError.innerHTML = "<span style= 'color : red'>Veillez renseigner votre groupe</span>"
-
+            return false
         } else {
 
             if (item.value.length >= 3 && item.value.length <= 50) {
@@ -199,18 +194,19 @@ function validationGroupe() {
                 if (regex.test(item.value)) {
                     groupeError.innerHTML = ""
                     item.removeAttribute('style')
-
+                    return true
                 } else {
                     item.setAttribute('style', 'border: solid red;')
                     groupeError.innerHTML = "<span style= 'color : red'> Le caractères doivent être des lettres </span>"
                     item.value.innerHTML = ""
-
+                    return false
                 }
             } else {
                 item.setAttribute('style', 'border: solid red;')
                 groupeError.innerHTML = "<span style= 'color : red'> Le champ doit contenir entre 3 et 50 caractères</span>"
 
             }
+            return false
         }
 
     }
@@ -226,12 +222,12 @@ function validationEmail() {
 
     function validateEmail(item) {
         let emailError = document.querySelector('#emailError')
-        let regex = /[A-Za-z0-9-_]+\.@[A-Za-z]{2,15}\.[a-z]{2,10}/
+        let regex = /[A-Za-z0-9-_]+@[A-Za-z]{2,15}\.[a-z]{2,10}/
 
         if (item.value == "") {
             item.setAttribute('style', 'border: solid red;')
             emailError.innerHTML = "<span style= 'color : red'>Veillez renseigner votre mail</span>"
-
+            return false
         } else {
 
             if (item.value.length >= 3 && item.value.length <= 50) {
@@ -240,18 +236,19 @@ function validationEmail() {
                 if (regex.test(item.value)) {
                     emailError.innerHTML = ""
                     item.removeAttribute('style')
-
+                    return true
                 } else {
                     item.setAttribute('style', 'border: solid red;')
                     emailError.innerHTML = "<span style= 'color : red'> Le caractères doivent être des lettres </span>"
                     item.value.innerHTML = ""
-
+                    return false
                 }
             } else {
                 item.setAttribute('style', 'border: solid red;')
                 emailError.innerHTML = "<span style= 'color : red'> Le champ doit contenir entre 3 et 50 caractères</span>"
 
             }
+            return false
         }
 
     }
@@ -267,12 +264,12 @@ function validationBio() {
 
     function validateBio(item) {
         let bioError = document.querySelector('#bioError')
-        let regex = /[.]+/
+        let regex = /[A-Za-z0-9 -_']+/
 
         if (item.value == "") {
             item.setAttribute('style', 'border: solid red;')
             bioError.innerHTML = "<span style= 'color : red'>Veillez renseigner votre biographie</span>"
-
+            return false
         } else {
 
             if (item.value.length >= 3 && item.value.length <= 250) {
@@ -281,6 +278,7 @@ function validationBio() {
                 if (regex.test(item.value)) {
                     bioError.innerHTML = ""
                     item.removeAttribute('style')
+                    return true
 
                 } else {
                     item.setAttribute('style', 'border: solid red;')
@@ -288,16 +286,23 @@ function validationBio() {
                     item.value.innerHTML = ""
 
                 }
+
             } else {
                 item.setAttribute('style', 'border: solid red;')
                 bioError.innerHTML = "<span style= 'color : red'> Le champ doit contenir entre 3 et 250 caractères</span>"
-
+                return false
             }
         }
 
     }
 }
 
+function validationAll() {
+    if (validationPrenom() || validationNom() || validationTel() || validationGroupe() || validationEmail() || validationBio()){
+        return true
+    }
+    return false
+}
 
 
 
