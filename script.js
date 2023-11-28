@@ -9,47 +9,67 @@ dropBox = document.querySelector(".dropBox");
 bouttonCreer = document.querySelector('.creer');
 list = document.querySelector(".list");
 icon_btn = document.querySelector(".list_btn")
-console.log(telephone.value);
-console.log(nom.value);
+// console.log(telephone.value);
+// console.log(nom.value);
+
+
+
+
+prenom.addEventListener('blur', validationPrenom)
+nom.addEventListener('blur', validationNom)
+telephone.addEventListener('blur', validationTel)
+groupe.addEventListener('blur', validationGroupe)
+email.addEventListener('blur', validationEmail)
+bio.addEventListener('blur', validationBio)
+
+
 
 
 
 bouttonCreer.addEventListener('click', function () {
     if (validationAll() === true) {
         console.log(prenom.value);
-        let tab = document.createElement('div');
-        tab.innerHTML = dropBox.value + "\n" + prenom.value + nom.value + groupe.value + telephone.value + bio.value
+        let divImg = document.createElement('div');
+        let divText = document.createElement('div');
+        let divBtn = document.createElement('div');
+        divImg.innerHTML = dropBox.value;
+        divText.innerHTML = prenom.value + nom.value + groupe.value + telephone.value + bio.value
+        divImg.setAttribute('style', 'border-radius: 2em; width:30%')
+        divText.setAttribute('style', 'display:flex; flex-direction:column; width:60%')
+        divBtn.setAttribute('style', 'display:flex; flex-direction:row; width:10%');
+        let btnModif = document.createElement('button');
+        btnModif.setAttribute('style', 'width:2em; height:2em')
+        let btnSup = document.createElement('button');
+        btnSup.setAttribute('style', 'width:2em; height:2em')
 
-        list.appendChild(tab);
-        console.log(tab);
+        divBtn.appendChild(btnModif);
+        divBtn.appendChild(btnSup);
+
+        let contact = document.createElement('div');
+        contact.setAttribute('style', 'display:flex; flex-direction:row; border: 1px #C4C4C4');
+        contact.appendChild(divImg);
+        contact.appendChild(divText);
+        contact.appendChild(divBtn);
+
+        list.setAttribute('style', 'display: flex; flex-direction: column;')
+        list.appendChild(contact);
+        console.log(contact);
     }
     else {
-      console.log('error');
+        console.log('error');
     }
 });
 
-// function showContacts() {
-
-// }
-
-
-
-// function saveData(newContact) {
-//     localStorage.setItem("contact", this.newContact);
-
-// }
-// function getData(newContact) {
-//     const getData = createElement('div');
-// }
 
 
 function validationPrenom() {
     const form = document.querySelector('form')
-    form.addEventListener('submit', (event) => {
-        event.preventDefault();
-        validatePrenom(form.Prenom)
+    // form.addEventListener('submit', (event) => {
+    //     event.preventDefault();
+    //     validatePrenom(form.Prenom)
 
-    })
+    // })
+    return validatePrenom(form.Prenom)
 
     function validatePrenom(item) {
         let prenomError = document.querySelector('#prenomError')
@@ -66,6 +86,7 @@ function validationPrenom() {
                 if (regex.test(item.value)) {
                     prenomError.innerHTML = ""
                     item.removeAttribute('style')
+                    console.log('cool');
                     return true
                 } else {
                     item.setAttribute('style', 'border: solid red;')
@@ -88,11 +109,12 @@ function validationPrenom() {
 
 function validationNom() {
     const form = document.querySelector('form')
-    form.addEventListener('submit', (event) => {
-        event.preventDefault();
-        validateName(form.Nom)
+    // form.addEventListener('submit', (event) => {
+    //     event.preventDefault();
+    //     validateName(form.Nom)
 
-    })
+    // })
+   return validateName(form.Nom)
 
     function validateName(item) {
         let nomError = document.querySelector('#nomError')
@@ -129,11 +151,12 @@ function validationNom() {
 
 function validationTel() {
     const form = document.querySelector('form')
-    form.addEventListener('submit', (event) => {
-        event.preventDefault();
-        validateTelephone(form.Telephone)
+    // form.addEventListener('submit', (event) => {
+    //     event.preventDefault();
+    //     validateTelephone(form.Telephone)
 
-    })
+    // })
+   return validateTelephone(form.Telephone)
 
     function validateTelephone(item) {
         let telError = document.querySelector('#telError')
@@ -172,11 +195,12 @@ function validationTel() {
 
 function validationGroupe() {
     const form = document.querySelector('form')
-    form.addEventListener('submit', (event) => {
-        event.preventDefault();
-        validateGroupe(form.Groupe)
+    // form.addEventListener('submit', (event) => {
+    //     event.preventDefault();
+    //     validateGroupe(form.Groupe)
 
-    })
+    // })
+   return validateGroupe(form.Groupe)
 
     function validateGroupe(item) {
         let groupeError = document.querySelector('#groupeError')
@@ -214,11 +238,12 @@ function validationGroupe() {
 
 function validationEmail() {
     const form = document.querySelector('form')
-    form.addEventListener('submit', (event) => {
-        event.preventDefault();
-        validateEmail(form.Email)
+    // form.addEventListener('submit', (event) => {
+    //     event.preventDefault();
+    //     validateEmail(form.Email)
 
-    })
+    // })
+  return  validateEmail(form.Email)
 
     function validateEmail(item) {
         let emailError = document.querySelector('#emailError')
@@ -256,11 +281,12 @@ function validationEmail() {
 
 function validationBio() {
     const form = document.querySelector('form')
-    form.addEventListener('submit', (event) => {
-        event.preventDefault();
-        validateBio(form.Bio)
+    // form.addEventListener('submit', (event) => {
+    //     event.preventDefault();
+    //     validateBio(form.Bio)
 
-    })
+    // })
+   return validateBio(form.Bio)
 
     function validateBio(item) {
         let bioError = document.querySelector('#bioError')
@@ -298,11 +324,63 @@ function validationBio() {
 }
 
 function validationAll() {
-    if (validationPrenom() || validationNom() || validationTel() || validationGroupe() || validationEmail() || validationBio()){
-        return true
-    }
-    return false
+  const returns = validationPrenom() && validationNom() && validationTel() && validationGroupe() && validationEmail() && validationBio()
+  return returns
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// function showContacts() {
+
+// }
+
+
+
+// function saveData(newContact) {
+//     localStorage.setItem("contact", this.newContact);
+
+// }
+// function getData(newContact) {
+//     const getData = createElement('div');
+// }
+
+
+
 
 
 
