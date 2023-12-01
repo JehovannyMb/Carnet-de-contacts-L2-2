@@ -38,7 +38,7 @@ bouttonCreer.addEventListener('click', function () {
         let imgPhoto = document.createElement('img');
         imgPhoto.setAttribute('src', `${file.value}` );
         imgPhoto.setAttribute('alt', 'Photo du contact' );
-        imgPhoto.setAttribute('style', 'height:100%; border-radius: 50%; border:1px solid black;' );
+        imgPhoto.setAttribute('style', 'border-radius: 50%; border:1px solid black; margin: 1em;' );
 
         console.log(imgPhoto);
         var tab = [];
@@ -57,27 +57,27 @@ bouttonCreer.addEventListener('click', function () {
         let divBtn = document.createElement('div');
 
         divImg.innerHTML = monObjet.Photo;
-        divText.innerHTML = monObjet.Prenom + monObjet.Nom + monObjet.Groupe + '\n' + monObjet.Telephone + '\n' + '\n' + monObjet.Bio
+        divText.innerHTML = `<span style='font-size:1.3em;'>${monObjet.Prenom + ' ' + monObjet.Nom + ' - ' + monObjet.Groupe}</span>` + '<br>' + `<span style='color: blue'>${monObjet.Telephone}</span>`  + '<br>' + `<span style='flex-wrap: wrap;'>${monObjet.Bio}</span>`
 
-        divImg.setAttribute('style', 'justify-content: left; text-align: left; width:15%;')
-        divText.setAttribute('style', 'display:flex; flex-direction:column; height: 100%; text-align: center; justify-content: center; width:65%;')
-        divBtn.setAttribute('style', 'display:flex; flex-direction:row; height: 10%; text-align: right; justify-content: right;');
+        divImg.setAttribute('style', 'justify-content: top; position: absolute; text-align: center; width:15%; flex-grow: 1;')
+        divText.setAttribute('style', 'display:flex; margin-left: 2em; flex-direction:column; flex-grow: 2; height: 100%; text-align: left; justify-content: center; width:65%;')
+        divBtn.setAttribute('style', 'display:flex; flex-direction:row; height: 10%; text-align: flex-grow: 3; right; justify-content: right;');
 
 
 
         let btnModif = document.createElement('button');
         btnModif.setAttribute('style', 'width:1em; height:1em; text-align: right;')
-        btnModif.innerHTML = "<span><img style='width: 100%; height:100%; justify-content: center;' src='https://t4.ftcdn.net/jpg/06/04/78/55/240_F_604785541_MbPwS5Hib6h6cEVgrdPh49t88xGOqLuB.jpg' alt='icon modif'/></span>"
+        btnModif.innerHTML = "<span style='text-align: right;'><img style='width: 100%; height:100%;' src='https://t4.ftcdn.net/jpg/06/04/78/55/240_F_604785541_MbPwS5Hib6h6cEVgrdPh49t88xGOqLuB.jpg' alt='icon modif'/></span>"
 
         let btnSup = document.createElement('button');
         btnSup.setAttribute('style', 'width:1em; height:1em; text-align: right;')
-        btnSup.innerHTML = "<span><img style='width: 100%; height:100%; justify-content: center;' src='https://cdn-icons-png.flaticon.com/128/6861/6861362.png' alt='icon suppr'/></span>"
+        btnSup.innerHTML = "<span style='text-align: right;'><img style='width: 100%; height:100%;' src='https://cdn-icons-png.flaticon.com/128/6861/6861362.png' alt='icon suppr'/></span>"
 
         divBtn.appendChild(btnModif);
         divBtn.appendChild(btnSup);
 
         let contact = document.createElement('div');
-        contact.setAttribute('style', 'display:flex; flex-direction:row; border: 1px solid #C4C4C4;  height: 18vh;');
+        contact.setAttribute('style', 'display:flex; flex-direction:row; border: 1px solid #C4C4C4;  height: 18vh;justify-content: space-between;');
         contact.appendChild(imgPhoto);
 
         contact.appendChild(divText);
@@ -338,7 +338,7 @@ function validationBio() {
             return false
         } else {
 
-            if (item.value.length >= 3 && item.value.length <= 250) {
+            if (item.value.length >= 3 && item.value.length <= 2500) {
                 item.removeAttribute('style')
 
                 if (regex.test(item.value)) {
@@ -355,7 +355,7 @@ function validationBio() {
 
             } else {
                 item.setAttribute('style', 'border: solid red;')
-                bioError.innerHTML = "<span style= 'color : red'> Le champ doit contenir entre 3 et 250 caractères</span>"
+                bioError.innerHTML = "<span style= 'color : red'> Le champ doit contenir entre 3 et 2500 caractères</span>"
                 return false
             }
         }
