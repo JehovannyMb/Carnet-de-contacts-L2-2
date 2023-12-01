@@ -59,9 +59,9 @@ bouttonCreer.addEventListener('click', function () {
         divImg.innerHTML = monObjet.Photo;
         divText.innerHTML = monObjet.Prenom + monObjet.Nom + monObjet.Groupe + '\n' + monObjet.Telephone + '\n' + '\n' + monObjet.Bio
 
-        divImg.setAttribute('style', 'justify-content: left; text-align: left;')
-        divText.setAttribute('style', 'display:flex; flex-direction:column; height: 100%; text-align: center; justify-content: center')
-        divBtn.setAttribute('style', 'display:flex; flex-direction:row; width:10%; height: 10%; text-align: right; justify-content: right;');
+        divImg.setAttribute('style', 'justify-content: left; text-align: left; width:15%;')
+        divText.setAttribute('style', 'display:flex; flex-direction:column; height: 100%; text-align: center; justify-content: center; width:65%;')
+        divBtn.setAttribute('style', 'display:flex; flex-direction:row; height: 10%; text-align: right; justify-content: right;');
 
 
 
