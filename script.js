@@ -36,13 +36,13 @@ bouttonCreer.addEventListener('click', function () {
     if (validationAll() === true) {
 
         let imgPhoto = document.createElement('img');
-        imgPhoto.setAttribute('src', `${file.value}` );
-        imgPhoto.setAttribute('alt', 'Photo du contact' );
-        imgPhoto.setAttribute('style', 'border-radius: 50%; border:1px solid black; margin: 1em;' );
+        imgPhoto.setAttribute('src', `${file.value}`);
+        imgPhoto.setAttribute('alt', 'Photo du contact');
+        imgPhoto.setAttribute('style', 'border-radius: 50%; border:1px solid black; margin: 1em;');
 
         console.log(imgPhoto);
         var tab = [];
-        let monObjet ={
+        let monObjet = {
             Prenom: prenom.value,
             Nom: nom.value,
             Telephone: telephone.value,
@@ -57,7 +57,8 @@ bouttonCreer.addEventListener('click', function () {
         let divBtn = document.createElement('div');
 
         divImg.innerHTML = monObjet.Photo;
-        divText.innerHTML = `<span style='font-size:1.3em;'>${monObjet.Prenom + ' ' + monObjet.Nom + ' - ' + monObjet.Groupe}</span>` + '<br>' + `<span style='color: blue'>${monObjet.Telephone}</span>`  + '<br>' + `<span style='flex-wrap: wrap;'>${monObjet.Bio}</span>`
+        divText.innerHTML = `<span style='font-size:1.3em;'>${monObjet.Prenom + ' ' + monObjet.Nom + ' - ' + monObjet.Groupe}</span>` + '<br>' + `<span style='color: blue'>${monObjet.Telephone}</span>` + '<br>' + `<span style='  display: flex;
+        justify-content: start; flex-wrap: wrap;'>${monObjet.Bio}</span>`
 
         divImg.setAttribute('style', 'justify-content: top; position: absolute; text-align: center; width:15%; flex-grow: 1;')
         divText.setAttribute('style', 'display:flex; margin-left: 2em; flex-direction:column; flex-grow: 2; height: 100%; text-align: left; justify-content: center; width:65%;')
@@ -90,6 +91,8 @@ bouttonCreer.addEventListener('click', function () {
         console.log(tab);
         list.setAttribute('style', 'display: flex; flex-direction: column;')
         list.appendChild(contact);
+        inputs.forEach((input) => (input.value = ""))
+
         console.log(contact);
         console.log(list);
         console.log(tab.length);
@@ -98,7 +101,7 @@ bouttonCreer.addEventListener('click', function () {
     else {
         console.log('error');
     }
-console.log(list);
+    console.log(list);
 
 });
 
