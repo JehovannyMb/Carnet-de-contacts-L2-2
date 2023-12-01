@@ -5,12 +5,12 @@ telephone = document.querySelector("#Telephone");
 groupe = document.querySelector("#Groupe");
 email = document.querySelector("#Email");
 bio = document.querySelector("#Bio");
-dropBox = document.querySelector(".dropBox");
+file = document.querySelector("#uploadFile");
 bouttonCreer = document.querySelector('.creer');
 list = document.querySelector(".list");
 icon_btn = document.querySelector(".list_btn")
-// console.log(telephone.value);
-// console.log(nom.value);
+let inputs = document.querySelectorAll("input")
+let btnRenit = document.querySelector('.renit')
 
 
 
@@ -23,43 +23,84 @@ email.addEventListener('blur', validationEmail)
 bio.addEventListener('blur', validationBio)
 
 
+btnRenit.addEventListener("click", function (e) {
+    inputs.forEach((input) => (input.value = ""))
 
+})
 
+console.log(file);
 
 bouttonCreer.addEventListener('click', function () {
+    console.log(file.value);
+
     if (validationAll() === true) {
-        console.log(prenom.value);
+
+        let imgPhoto = document.createElement('img');
+        imgPhoto.setAttribute('src', `${file.value}` );
+        imgPhoto.setAttribute('alt', 'Photo du contact' );
+        imgPhoto.setAttribute('style', 'height:100%; border-radius: 50%; border:1px solid black;' );
+
+        console.log(imgPhoto);
+        var tab = [];
+        let monObjet ={
+            Prenom: prenom.value,
+            Nom: nom.value,
+            Telephone: telephone.value,
+            Groupe: groupe.value,
+            Email: email.value,
+            Bio: bio.value,
+            Photo: imgPhoto,
+        }
+
         let divImg = document.createElement('div');
         let divText = document.createElement('div');
         let divBtn = document.createElement('div');
-        divImg.innerHTML = dropBox.value;
-        divText.innerHTML = prenom.value + nom.value + groupe.value + telephone.value + bio.value
-        divImg.setAttribute('style', 'border-radius: 2em; width:30%')
-        divText.setAttribute('style', 'display:flex; flex-direction:column; width:60%')
-        divBtn.setAttribute('style', 'display:flex; flex-direction:row; width:10%');
+
+        divImg.innerHTML = monObjet.Photo;
+        divText.innerHTML = monObjet.Prenom + monObjet.Nom + monObjet.Groupe + '\n' + monObjet.Telephone + '\n' + '\n' + monObjet.Bio
+
+        divImg.setAttribute('style', 'justify-content: left; text-align: left;')
+        divText.setAttribute('style', 'display:flex; flex-direction:column; height: 100%; text-align: center; justify-content: center')
+        divBtn.setAttribute('style', 'display:flex; flex-direction:row; width:10%; height: 10%; text-align: right; justify-content: right;');
+
+
+
         let btnModif = document.createElement('button');
-        btnModif.setAttribute('style', 'width:2em; height:2em')
+        btnModif.setAttribute('style', 'width:1em; height:1em; text-align: right;')
+        btnModif.innerHTML = "<span><img style='width: 100%; height:100%; justify-content: center;' src='https://t4.ftcdn.net/jpg/06/04/78/55/240_F_604785541_MbPwS5Hib6h6cEVgrdPh49t88xGOqLuB.jpg' alt='icon modif'/></span>"
+
         let btnSup = document.createElement('button');
-        btnSup.setAttribute('style', 'width:2em; height:2em')
+        btnSup.setAttribute('style', 'width:1em; height:1em; text-align: right;')
+        btnSup.innerHTML = "<span><img style='width: 100%; height:100%; justify-content: center;' src='https://cdn-icons-png.flaticon.com/128/6861/6861362.png' alt='icon suppr'/></span>"
 
         divBtn.appendChild(btnModif);
         divBtn.appendChild(btnSup);
 
         let contact = document.createElement('div');
-        contact.setAttribute('style', 'display:flex; flex-direction:row; border: 1px #C4C4C4');
-        contact.appendChild(divImg);
+        contact.setAttribute('style', 'display:flex; flex-direction:row; border: 1px solid #C4C4C4;  height: 18vh;');
+        contact.appendChild(imgPhoto);
+
         contact.appendChild(divText);
         contact.appendChild(divBtn);
 
+
+        tab.push(monObjet);
+        tab.push(contact);
+
+        console.log(tab);
         list.setAttribute('style', 'display: flex; flex-direction: column;')
         list.appendChild(contact);
         console.log(contact);
+        console.log(list);
+        console.log(tab.length);
+
     }
     else {
         console.log('error');
     }
-});
+console.log(list);
 
+});
 
 
 function validationPrenom() {
@@ -86,7 +127,6 @@ function validationPrenom() {
                 if (regex.test(item.value)) {
                     prenomError.innerHTML = ""
                     item.removeAttribute('style')
-                    console.log('cool');
                     return true
                 } else {
                     item.setAttribute('style', 'border: solid red;')
@@ -114,7 +154,7 @@ function validationNom() {
     //     validateName(form.Nom)
 
     // })
-   return validateName(form.Nom)
+    return validateName(form.Nom)
 
     function validateName(item) {
         let nomError = document.querySelector('#nomError')
@@ -156,7 +196,7 @@ function validationTel() {
     //     validateTelephone(form.Telephone)
 
     // })
-   return validateTelephone(form.Telephone)
+    return validateTelephone(form.Telephone)
 
     function validateTelephone(item) {
         let telError = document.querySelector('#telError')
@@ -200,7 +240,7 @@ function validationGroupe() {
     //     validateGroupe(form.Groupe)
 
     // })
-   return validateGroupe(form.Groupe)
+    return validateGroupe(form.Groupe)
 
     function validateGroupe(item) {
         let groupeError = document.querySelector('#groupeError')
@@ -243,7 +283,7 @@ function validationEmail() {
     //     validateEmail(form.Email)
 
     // })
-  return  validateEmail(form.Email)
+    return validateEmail(form.Email)
 
     function validateEmail(item) {
         let emailError = document.querySelector('#emailError')
@@ -286,7 +326,7 @@ function validationBio() {
     //     validateBio(form.Bio)
 
     // })
-   return validateBio(form.Bio)
+    return validateBio(form.Bio)
 
     function validateBio(item) {
         let bioError = document.querySelector('#bioError')
@@ -324,43 +364,9 @@ function validationBio() {
 }
 
 function validationAll() {
-  const returns = validationPrenom() && validationNom() && validationTel() && validationGroupe() && validationEmail() && validationBio()
-  return returns
+    const returns = validationPrenom() && validationNom() && validationTel() && validationGroupe() && validationEmail() && validationBio()
+    return returns
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -378,21 +384,5 @@ function validationAll() {
 // function getData(newContact) {
 //     const getData = createElement('div');
 // }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
