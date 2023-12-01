@@ -1,124 +1,126 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>CarnetDeContact</title>
-    <link rel="stylesheet" href="style.css" />
-    <link rel="stylesheet" href="styleQuery.css">
-  </head>
 
-  <body>
-    <header>
-      <p class="nav">
-        <span class="title">Répertoire des contacts</span>
-      </p>
-    </header>
-    <div class="Repertoire">
-        <section class="formulaire">
-          <p class="form-title">Formulaire de contact</p>
-          <form accept="text" method="dialog">
-            <label for="Prenom">Prénom</label>
-            <input type="text" id="Prenom" />
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CarnetDeContact</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="styleQuery.css">
+</head>
 
-            <label for="Nom">Nom</label>
-            <input type="text" id="Nom" />
+<body>
+  <header>
+    <p class="nav">
+      <span class="title">Répertoire des contacts</span>
+    </p>
+  </header>
+  <div class="Repertoire">
+    <section class="formulaire">
+      <p class="form-title">Formulaire de contact</p>
+      <form accept="text" method="dialog">
+        <label for="Prenom">Prénom</label>
+        <input type="text" id="Prenom" />
 
-            <label for="Telephone">Téléphone</label>
-            <input type="tel" id="Telephone" />
+        <label for="Nom">Nom</label>
+        <input type="text" id="Nom" />
 
-            <label for="Groupe">Groupe</label>
-            <input type="text" id="Groupe" />
+        <label for="Telephone">Téléphone</label>
+        <input type="tel" id="Telephone" />
 
-            <label for="Email">Email</label>
-            <input type="email" id="Email" />
+        <label for="Groupe">Groupe</label>
+        <input type="text" id="Groupe" />
 
-            <label for="Bio">Bio</label>
-            <input type="text" id="Bio" />
-            <div class="dropBox">
-              <p>Déposez la photo ici <input type="file" id="uploadFile" /></p>
-            </div>
-            <button class="creer">Créer</button>
-            <button class="renit">Rénit</button>
-          </form>
-        </section>
+        <label for="Email">Email</label>
+        <input type="email" id="Email" />
 
-        <section class="list">
-          <p class="list-title">Liste des contacts</p>
-          <!-- <div class="list__contact">
-            <div class="photo">
-              <img src="images/henri-meilhac-156026-1024x786.jpg" alt="" />
-            </div>
+        <label for="Bio">Bio</label>
+        <input type="text" id="Bio" />
+        <div class="dropBox">
+          <p>Déposez la photo ici <input type="file" id="uploadFile" /></p>
+        </div>
+        <button class="creer">Créer</button>
+        <button class="renit">Rénit</button>
+      </form>
+    </section>
 
-            <div class="description">
-              <p>id</p>
-              <span>Tel</span>
-              <p>
-                Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-                Architecto tempora voluptates ullam ab error similique in
-                voluptas!
-              </p>
-            </div>
-            <div class="list_btn">
-                <button>
-                    icon1
-                </button>
-                <button>
-                    icon2
-                </button>
-            </div>
-          </div>
-          
-          <div class="list__contact">
-            <div class="photo">
-              <img src="images/IMG_20231115_201602_227.jpg" alt="" />
-            </div>
+     <section class="list">
+      <!-- <p class="list-title">Liste des contacts</p>
+      <div class="list__contact">
+        <div class="photo">
+          <img src="images/henri-meilhac-156026-1024x786.jpg" alt="" />
+        </div>
 
-            <div class="description">
-              <p>id</p>
-              <span>Tel</span>
-              <p>
-                Lorem ipsum dolor sit amet consectetur, adipisicing elit.
-                Quisquam veniam, similique ipsam animi tempore repudiandae
-                cumque!
-              </p>
-            </div>
-            <div class="list_btn">
-                <button>
-                    icon1
-                </button>
-                <button>
-                    icon2
-                </button>
-            </div>
-          </div>
-          
-          <div class="list__contact">
-            <div class="photo">
-              <img src="images/Snapchat-1659989262.jpg" alt=""/>
-            </div>
+        <div class="description">
+          <p>id</p>
+          <span>Tel</span>
+          <p>
+            Lorem ipsum dolor, sit amet consectetur adipisicing elit.
+            Architecto tempora voluptates ullam ab error similique in
+            voluptas!
+          </p>
+        </div>
+        <div class="list_btn">
+          <button>
+            icon1
+          </button>
+          <button>
+            icon2
+          </button>
+        </div>
+      </div>
 
-            <div class="description">
-              <p>id</p>
-              <span>Tel</span>
-              <p>
-                Lorem ipsum dolor, sit amet consectetur adipisicing elit. Aut
-                velit nemo maiores modi repudiandae in labore ad excepturi
-                reprehenderit!
-              </p>
-            </div>
-            <div class="list_btn">
-                <button>
-                    icon1
-                </button>
-                <button>
-                    icon2
-                </button>
-            </div>
-          </div>
-        -->
-        </section>
-    </div>
-    <script src="script.js"></script>
-  </body>
-</html>
+      <div class="list__contact">
+        <div class="photo">
+          <img src="images/IMG_20231115_201602_227.jpg" alt="" />
+        </div>
+
+        <div class="description">
+          <p>id</p>
+          <span>Tel</span>
+          <p>
+            Lorem ipsum dolor sit amet consectetur, adipisicing elit.
+            Quisquam veniam, similique ipsam animi tempore repudiandae
+            cumque!
+          </p>
+        </div>
+        <div class="list_btn"> 
+          <button>
+            icon1
+          </button>
+          <button>
+            icon2
+          </button>
+        </div>
+      </div>
+
+      <div class="list__contact">
+        <div class="photo">
+          <img src="images/Snapchat-1659989262.jpg" alt="" />
+        </div>
+
+        <div class="description">
+          <p>id</p>
+          <span>Tel</span>
+          <p>
+            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Aut
+            velit nemo maiores modi repudiandae in labore ad excepturi
+            reprehenderit!
+          </p>
+        </div>
+         <div class="list_btn">
+          <button>
+            icon1
+          </button>
+          <button>
+            icon2
+          </button> -->
+        </div>
+      </div>
+
+    </section> 
+  </div>
+  <script src="script.js"></script>
+</body>
+
+ </html>
