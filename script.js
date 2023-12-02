@@ -1,4 +1,4 @@
-let form, prenom, nom, telephone, groupe, email, bio, dropBox, creer, bouttonCreer, list, icon_btn;
+let form, prenom, nom, telephone, groupe, email, bio, file, creer, bouttonCreer, list, icon_btn;
 prenom = document.querySelector("#Prenom");
 nom = document.querySelector("#Nom");
 telephone = document.querySelector("#Telephone");
@@ -41,7 +41,7 @@ bouttonCreer.addEventListener('click', function () {
         imgPhoto.setAttribute('style', 'border-radius: 50%; border:1px solid black; margin: 1em;');
 
         console.log(imgPhoto);
-        var tab = [];
+        let tab = [];
         let monObjet = {
             Prenom: prenom.value,
             Nom: nom.value,
@@ -69,10 +69,12 @@ bouttonCreer.addEventListener('click', function () {
         let btnModif = document.createElement('button');
         btnModif.setAttribute('style', 'width:1em; height:1em; text-align: right;')
         btnModif.innerHTML = "<span style='text-align: right;'><img style='width: 100%; height:100%;' src='https://t4.ftcdn.net/jpg/06/04/78/55/240_F_604785541_MbPwS5Hib6h6cEVgrdPh49t88xGOqLuB.jpg' alt='icon modif'/></span>"
+        btnModif.setAttribute('id', 'editBtn');
 
         let btnSup = document.createElement('button');
         btnSup.setAttribute('style', 'width:1em; height:1em; text-align: right;')
         btnSup.innerHTML = "<span style='text-align: right;'><img style='width: 100%; height:100%;' src='https://cdn-icons-png.flaticon.com/128/6861/6861362.png' alt='icon suppr'/></span>"
+        btnSup.setAttribute('id', 'deleteBtn');
 
         divBtn.appendChild(btnModif);
         divBtn.appendChild(btnSup);
@@ -80,6 +82,7 @@ bouttonCreer.addEventListener('click', function () {
         let contact = document.createElement('div');
         contact.setAttribute('style', 'display:flex; flex-direction:row; border: 1px solid #C4C4C4;  height: 18vh;justify-content: space-between;');
         contact.appendChild(imgPhoto);
+        contact.setAttribute('id', 'NumeroDeContact');
 
         contact.appendChild(divText);
         contact.appendChild(divBtn);
@@ -96,6 +99,8 @@ bouttonCreer.addEventListener('click', function () {
         console.log(contact);
         console.log(list);
         console.log(tab.length);
+        editContact(monObjet)
+        deleteContact(tab)
 
     }
     else {
@@ -371,8 +376,45 @@ function validationAll() {
     return returns
 }
 
+function editContact(monObjet) {
+    let editBtn = document.querySelector('#editBtn');
+    editBtn.addEventListener('click', (e) => {
+        prenom.value = monObjet.Prenom;
+        nom.value = monObjet.Nom;
+        telephone.value = monObjet.Telephone;
+        groupe.value = monObjet.Groupe;
+        email.value = monObjet.Email;
+        bio.value = monObjet.Bio;
+        file.value = monObjet.Photo;
+        console.log('cool');
+        console.log(prenom);
+        console.log(prenom.value);
+    })
+    console.log('function1');
+}
 
 
+function deleteContact(tab) {
+    let deleteBtn = document.querySelector('#deleteBtn');
+    // let numeroDeContact = document.querySelector('#numeroDeContact');
+
+    deleteBtn.addEventListener('click', function() {
+        // if(numeroDeContact.parentNode){
+        //     numeroDeContact.parentNode.removeChild(numeroDeContact);
+        // }
+let parent = deleteBtn.parentNode;
+parent.removeChild(deleteBtn);
+
+        // tab.pop()
+        console.log('cool2');
+        // console.log(tab);
+
+
+
+    })
+    console.log('function2');
+
+}
 
 // function showContacts() {
 
