@@ -11,6 +11,7 @@ header .nav {
   gap: 24px;
   padding: 20px 30px;
 }
+
 header .nav .title {
   width: 245px;
   height: 30px;
@@ -32,11 +33,13 @@ header .nav .title {
   display: flex;
   border: 1px solid;
 }
+
 .Repertoire .formulaire {
   width: 45%;
   height: 85vh;
-  border: dashed 1px #0880D6;
+  border: 1px solid #b5b2b2;
 }
+
 .Repertoire .formulaire .form-title {
   width: 100%;
   background-color: #0880D6;
@@ -46,42 +49,52 @@ header .nav .title {
   font-size: 20px;
   font-weight: 700;
 }
+
 .Repertoire .formulaire form {
   padding: 10px;
   font-size: 16px;
 }
+
 .Repertoire .formulaire form label {
   line-height: 35px;
   color: #0880D6;
 }
+
 .Repertoire .formulaire form input {
   width: 98%;
   height: 45px;
+  /* border: solid red; */
 }
+
 .Repertoire .formulaire form #Bio {
   height: 100px;
+
 }
+
 .Repertoire .formulaire form .dropBox {
   width: 98%;
   height: 120px;
   margin: 20px auto;
   position: relative;
   text-align: center;
-  border: dashed 1px;
+  border: dashed 1px #918585;
   left: -5px;
 }
+
 .Repertoire .formulaire form .dropBox p {
   margin: 40px auto;
   width: 200px;
   font-size: 20px;
   font-weight: 700;
 }
+
 .Repertoire .formulaire form .dropBox #uploadFile {
   position: absolute;
   opacity: 0;
   top: 0;
   left: 0;
 }
+
 .Repertoire .formulaire form button {
   border: none;
   padding: 10px 70px;
@@ -89,19 +102,22 @@ header .nav .title {
   margin-right: 30px;
   color: #fff;
 }
+
 .Repertoire .formulaire form .creer {
   background-color: #0880D6;
 }
+
 .Repertoire .formulaire form .renit {
   background-color: rgb(253, 37, 37);
 }
+
 .Repertoire .list {
   width: 55%;
   height: 65vh;
-  border: dashed 1px #0880D6;
   display: flex;
   flex-wrap: wrap;
 }
+
 .Repertoire .list .list-title {
   background-color: #0880D6;
   color: #fff;
@@ -111,23 +127,35 @@ header .nav .title {
   font-size: 20px;
   font-weight: 700;
 }
+
 .Repertoire .list .list__contact {
   display: flex;
   width: 100%;
   padding: 10px 20px;
-  border-bottom: solid 1px;
+  border: 1px solid #C4C4C4;
 }
+
 .Repertoire .list .list__contact .photo {
   width: 30%;
 }
+
 .Repertoire .list .list__contact .photo img {
   width: 75%;
   height: 18vh;
   border-radius: 50%;
 }
+
 .Repertoire .list .list__contact .description {
   width: 60%;
 }
+
 .Repertoire .list .list__contact .description p {
   padding: 15px 0;
-}/*# sourceMappingURL=style.css.map */
+}
+
+/*# sourceMappingURL=style.css.map */
+.list_btn {
+  display: flex;
+  flex-direction: row;
+  height: 20px;
+}
