@@ -45,11 +45,11 @@ bouttonCreer.addEventListener('click', function () {
         monObjet.Groupe = groupe.value
         monObjet.Email = email.value
         monObjet.Bio = bio.value
-
+        monObjet.Photo = file
 
 
         console.log(imgPhoto);
-    
+
 
         let divImg = document.createElement('div');
         let divText = document.createElement('div');
@@ -402,11 +402,11 @@ function deleteContact(tab) {
     let numeroDeContact = document.querySelector('#numeroDeContact');
 
     deleteBtn.addEventListener('click', function () {
-//         tab.forEach((e) => (console.log('yes')))
-// tab.pop()
-let parent = imgPhoto.parentNode
-parent.innerHTML = '';
-parent.removeAttribute('style')
+        //         tab.forEach((e) => (console.log('yes')))
+        // tab.pop()
+        let parent = imgPhoto.parentNode
+        parent.innerHTML = '';
+        parent.removeAttribute('style')
 
         console.log('cool2');
 
