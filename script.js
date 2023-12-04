@@ -39,6 +39,7 @@ bouttonCreer.addEventListener('click', function () {
         imgPhoto.setAttribute('src', `${file.value}`);
         imgPhoto.setAttribute('alt', 'Photo du contact');
         imgPhoto.setAttribute('style', 'border-radius: 50%; border:1px solid black; margin: 1em;');
+        imgPhoto.setAttribute('id', 'imgPhoto');
 
         console.log(imgPhoto);
         let tab = [];
@@ -396,20 +397,16 @@ function editContact(monObjet) {
 
 function deleteContact(tab) {
     let deleteBtn = document.querySelector('#deleteBtn');
-    // let numeroDeContact = document.querySelector('#numeroDeContact');
+    let editBtn = document.querySelector('#editBtn');
+    let imgPhoto = document.querySelector('#imgPhoto');
 
-    deleteBtn.addEventListener('click', function() {
-        // if(numeroDeContact.parentNode){
-        //     numeroDeContact.parentNode.removeChild(numeroDeContact);
-        // }
-let parent = deleteBtn.parentNode;
-parent.removeChild(deleteBtn);
+    let numeroDeContact = document.querySelector('#numeroDeContact');
 
-        // tab.pop()
+    deleteBtn.addEventListener('click', function () {
+        tab.forEach((e) => (console.log('yes')))
+tab.pop()
+
         console.log('cool2');
-        // console.log(tab);
-
-
 
     })
     console.log('function2');
