@@ -11,8 +11,13 @@ list = document.querySelector(".list");
 icon_btn = document.querySelector(".list_btn")
 let inputs = document.querySelectorAll("input")
 let btnRenit = document.querySelector('.renit')
-
-
+let tab = [];
+let monObjet = {};
+let imgPhoto = document.createElement('img');
+imgPhoto.setAttribute('src', `${file.value}`);
+imgPhoto.setAttribute('alt', 'Photo du contact');
+imgPhoto.setAttribute('style', 'border-radius: 50%; border:1px solid black; margin: 1em;');
+imgPhoto.setAttribute('id', 'imgPhoto');
 
 
 prenom.addEventListener('blur', validationPrenom)
@@ -34,24 +39,17 @@ bouttonCreer.addEventListener('click', function () {
     console.log(file.value);
 
     if (validationAll() === true) {
+        monObjet.Prenom = prenom.value
+        monObjet.Nom = nom.value
+        monObjet.Telephone = telephone.value
+        monObjet.Groupe = groupe.value
+        monObjet.Email = email.value
+        monObjet.Bio = bio.value
 
-        let imgPhoto = document.createElement('img');
-        imgPhoto.setAttribute('src', `${file.value}`);
-        imgPhoto.setAttribute('alt', 'Photo du contact');
-        imgPhoto.setAttribute('style', 'border-radius: 50%; border:1px solid black; margin: 1em;');
-        imgPhoto.setAttribute('id', 'imgPhoto');
+
 
         console.log(imgPhoto);
-        let tab = [];
-        let monObjet = {
-            Prenom: prenom.value,
-            Nom: nom.value,
-            Telephone: telephone.value,
-            Groupe: groupe.value,
-            Email: email.value,
-            Bio: bio.value,
-            Photo: imgPhoto,
-        }
+    
 
         let divImg = document.createElement('div');
         let divText = document.createElement('div');
@@ -100,8 +98,9 @@ bouttonCreer.addEventListener('click', function () {
         console.log(contact);
         console.log(list);
         console.log(tab.length);
-        editContact(monObjet)
-        deleteContact(tab)
+
+        editContact()
+        deleteContact()
 
     }
     else {
@@ -377,7 +376,7 @@ function validationAll() {
     return returns
 }
 
-function editContact(monObjet) {
+function editContact() {
     let editBtn = document.querySelector('#editBtn');
     editBtn.addEventListener('click', (e) => {
         prenom.value = monObjet.Prenom;
@@ -397,14 +396,17 @@ function editContact(monObjet) {
 
 function deleteContact(tab) {
     let deleteBtn = document.querySelector('#deleteBtn');
-    let editBtn = document.querySelector('#editBtn');
-    let imgPhoto = document.querySelector('#imgPhoto');
+    // let editBtn = document.querySelector('#editBtn');
+    // let imgPhoto = document.querySelector('#imgPhoto');
 
     let numeroDeContact = document.querySelector('#numeroDeContact');
 
     deleteBtn.addEventListener('click', function () {
-        tab.forEach((e) => (console.log('yes')))
-tab.pop()
+//         tab.forEach((e) => (console.log('yes')))
+// tab.pop()
+let parent = imgPhoto.parentNode
+parent.innerHTML = '';
+parent.removeAttribute('style')
 
         console.log('cool2');
 
