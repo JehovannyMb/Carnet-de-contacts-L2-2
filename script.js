@@ -13,11 +13,7 @@ let inputs = document.querySelectorAll("input")
 let btnRenit = document.querySelector('.renit')
 let tab = [];
 let monObjet = {};
-let imgPhoto = document.createElement('img');
-imgPhoto.setAttribute('src', `${file.value}`);
-imgPhoto.setAttribute('alt', 'Photo du contact');
-imgPhoto.setAttribute('style', 'border-radius: 50%; border:1px solid black; margin: 1em;');
-imgPhoto.setAttribute('id', 'imgPhoto');
+
 
 
 prenom.addEventListener('blur', validationPrenom)
@@ -39,6 +35,12 @@ bouttonCreer.addEventListener('click', function () {
     console.log(file.value);
 
     if (validationAll() === true) {
+        let imgPhoto = document.createElement('img');
+        imgPhoto.setAttribute('src', `${file.value}`);
+        imgPhoto.setAttribute('alt', 'Photo du contact');
+        imgPhoto.setAttribute('style', 'border-radius: 50%; border:1px solid black; margin: 1em;');
+        imgPhoto.setAttribute('id', 'imgPhoto');
+        
         monObjet.Prenom = prenom.value
         monObjet.Nom = nom.value
         monObjet.Telephone = telephone.value
@@ -394,12 +396,12 @@ function editContact() {
 }
 
 
-function deleteContact(tab) {
-    let deleteBtn = document.querySelector('#deleteBtn');
+function deleteContact() {
+    // let deleteBtn = document.querySelector('#deleteBtn');
     // let editBtn = document.querySelector('#editBtn');
-    // let imgPhoto = document.querySelector('#imgPhoto');
+    let imgPhoto = document.querySelector('#imgPhoto');
 
-    let numeroDeContact = document.querySelector('#numeroDeContact');
+    // let numeroDeContact = document.querySelector('#numeroDeContact');
 
     deleteBtn.addEventListener('click', function () {
         //         tab.forEach((e) => (console.log('yes')))
