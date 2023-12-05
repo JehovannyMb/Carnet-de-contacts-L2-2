@@ -380,6 +380,8 @@ function validationAll() {
 
 function editContact() {
     let editBtn = document.querySelector('#editBtn');
+    let imgPhoto = document.querySelector('#imgPhoto');
+
     editBtn.addEventListener('click', (e) => {
         prenom.value = monObjet.Prenom;
         nom.value = monObjet.Nom;
@@ -391,6 +393,13 @@ function editContact() {
         console.log('cool');
         console.log(prenom);
         console.log(prenom.value);
+
+
+        let parent = imgPhoto.parentNode
+        parent.innerHTML = '';
+        parent.removeAttribute('style')
+
+        
     })
     console.log('function1');
 }
