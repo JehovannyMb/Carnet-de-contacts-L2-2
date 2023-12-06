@@ -1,4 +1,4 @@
-let form, contacts, prenom, nom, telephone, groupe, email, bio, file, creer, bouttonCreer, list, icon_btn;
+let form, contacts, prenom, nom, telephone, groupe, email, bio, file, creer, bouttonCreer, list, icon_btn, dropBox;
 prenom = document.querySelector("#Prenom");
 nom = document.querySelector("#Nom");
 telephone = document.querySelector("#Telephone");
@@ -7,6 +7,14 @@ email = document.querySelector("#Email");
 bio = document.querySelector("#Bio");
 file = document.querySelector("#uploadFile");
 file.setAttribute('draggable', 'true')
+dropBox = document.querySelector('.dropBox')
+dropBox.addEventListener('change', function(){
+let imgForm = document.createElement('img');
+imgForm.setAttribute('src', `${file.value}`)
+dropBox.innerHTML = imgForm;
+console.log(dropBox);
+console.log(imgForm);
+})
 bouttonCreer = document.querySelector('.creer');
 list = document.querySelector(".list");
 icon_btn = document.querySelector(".list_btn")
@@ -339,10 +347,8 @@ function editContact(index) {
 
 
 function deleteContact(index) {
-  console.log('delete');
   tab.splice(index, 1);
   showContacts()
-
 }
 
 function showContacts() {
@@ -399,13 +405,5 @@ function showContacts() {
 }
 
 
-
-// function saveData(newContact) {
-//     localStorage.setItem("contact", this.newContact);
-
-// }
-// function getData(newContact) {
-//     const getData = createElement('div');
-// }
 
 
