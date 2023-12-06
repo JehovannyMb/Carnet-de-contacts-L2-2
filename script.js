@@ -1,20 +1,12 @@
-let form, contacts, prenom, nom, telephone, groupe, email, bio, file, creer, bouttonCreer, list, icon_btn, dropBox;
+let form, contacts, prenom, nom, telephone, groupe, email, bio, file, creer, bouttonCreer, list, icon_btn;
 prenom = document.querySelector("#Prenom");
 nom = document.querySelector("#Nom");
 telephone = document.querySelector("#Telephone");
 groupe = document.querySelector("#Groupe");
 email = document.querySelector("#Email");
 bio = document.querySelector("#Bio");
-file = document.querySelector("#uploadFile");
-file.setAttribute('draggable', 'true')
-dropBox = document.querySelector('.dropBox')
-dropBox.addEventListener('change', function(){
-let imgForm = document.createElement('img');
-imgForm.setAttribute('src', `${file.value}`)
-dropBox.innerHTML = imgForm;
-console.log(dropBox);
-console.log(imgForm);
-})
+// file = document.querySelector("#uploadFile");
+// file.setAttribute('draggable', 'true')
 bouttonCreer = document.querySelector('.creer');
 list = document.querySelector(".list");
 icon_btn = document.querySelector(".list_btn")
@@ -33,18 +25,53 @@ email.addEventListener('blur', validationEmail)
 bio.addEventListener('blur', validationBio)
 
 
+
+
+
+const dropBox = document.querySelector('.dropBox');
+const uploadFile = document.getElementById('uploadFile');
+
+// Écouter l'événement de déposer
+
+uploadFile.addEventListener('change', (e) => {
+  e.preventDefault();
+  console.log('dropped');
+  const file = e.target.files[0];
+  const image = document.createElement('img');
+image.setAttribute('style', '  width: 100%; height: 100%; position: relative; text-align: center; border: dashed 1px #918585;')
+image.setAttribute('id', 'imgForm')
+  const reader = new FileReader();
+
+  reader.onload = (e) => {
+    image.src = e.target.result;
+    dropBox.innerHTML = ''
+    dropBox.removeAttribute('style')
+    dropBox.appendChild(image);
+  };
+  reader.readAsDataURL(file);
+
+});
+
+// Empêcher le comportement par défaut du navigateur pour les événements de glisser-déposer
+
+dropBox.addEventListener('dragover', (e) => {
+  e.preventDefault();
+});
+
+
+
+
+
 btnRenit.addEventListener("click", function (e) {
   inputs.forEach((input) => (input.value = ""))
 
 })
 
-console.log(file);
 
 bouttonCreer.addEventListener('click', function (e) {
-  console.log(file.value);
 
   if (validationAll() === true) {
-
+let image = document.querySelector('#imgForm')
 
     tab.push({
       Prenom: prenom.value,
@@ -53,7 +80,7 @@ bouttonCreer.addEventListener('click', function (e) {
       Groupe: groupe.value,
       Email: email.value,
       Bio: bio.value,
-      Photo: file,
+      Photo: image,
     });
 
     showContacts()
@@ -339,7 +366,7 @@ function editContact(index) {
   groupe.value = tab[index].Groupe;
   email.value = tab[index].Email;
   bio.value = tab[index].Bio;
-  file.value = tab[index].Photo;
+  dropBox.value = tab[index].Photo;
 
   // tab.splice(index, 1);
 
@@ -356,17 +383,12 @@ function showContacts() {
   contacts.innerHTML = ''
   tab.forEach((element, index) => {
 
-    let imgPhoto = document.createElement('img');
-    imgPhoto.setAttribute('src', `${element.Photo.value}`);
-    imgPhoto.setAttribute('alt', 'Photo du contact');
-    imgPhoto.setAttribute('style', '');
-    imgPhoto.setAttribute('id', 'imgPhoto');
 
     let divImg = document.createElement('div');
     let divText = document.createElement('div');
     let divBtn = document.createElement('div');
 
-    divImg.innerHTML = imgPhoto;
+    divImg.innerHTML = element.Photo;
 
     divText.innerHTML = `<span style='font-size:1.3em;'>${element.Prenom + ' ' + element.Nom + ' - ' + element.Groupe}</span>` + '<br>' + `<span style='color: blue'>${element.Telephone}</span>` + '<br>' + `<span style='  display: flex;
       justify-content: start; flex-wrap: wrap;'>${element.Bio}</span>`
