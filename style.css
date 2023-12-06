@@ -114,8 +114,7 @@ header .nav .title {
 .Repertoire .list {
   width: 55%;
   height: 65vh;
-  display: flex;
-  flex-wrap: wrap;
+
 }
 
 .Repertoire .list .list-title {
