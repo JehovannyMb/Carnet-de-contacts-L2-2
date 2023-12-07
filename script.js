@@ -1,10 +1,12 @@
-let form, contacts, prenom, nom, telephone, groupe, email, bio, file, creer, bouttonCreer, list, icon_btn;
+let form, contacts, prenom, nom, telephone, groupe, email, bio, file, creer, bouttonCreer, list, icon_btn, paragraphePhoto;
 prenom = document.querySelector("#Prenom");
 nom = document.querySelector("#Nom");
 telephone = document.querySelector("#Telephone");
 groupe = document.querySelector("#Groupe");
 email = document.querySelector("#Email");
 bio = document.querySelector("#Bio");
+paragraphePhoto = document.querySelector('#paragraphePhoto')
+
 // file = document.querySelector("#uploadFile");
 // file.setAttribute('draggable', 'true')
 bouttonCreer = document.querySelector('.creer');
@@ -30,7 +32,7 @@ bio.addEventListener('blur', validationBio)
 
 const dropBox = document.querySelector('.dropBox');
 const uploadFile = document.getElementById('uploadFile');
-
+console.log(dropBox);
 // Écouter l'événement de déposer
 
 uploadFile.addEventListener('change', (e) => {
@@ -38,14 +40,13 @@ uploadFile.addEventListener('change', (e) => {
   console.log('dropped');
   const file = e.target.files[0];
   const image = document.createElement('img');
-image.setAttribute('style', '  width: 100%; height: 100%; position: relative; text-align: center; border: dashed 1px #918585;')
-image.setAttribute('id', 'imgForm')
+  image.setAttribute('style', '  width: 100%; height: 100%; position: relative; text-align: center; border: dashed 1px #918585;')
+  image.setAttribute('id', 'imgForm')
   const reader = new FileReader();
 
   reader.onload = (e) => {
     image.src = e.target.result;
     dropBox.innerHTML = ''
-    dropBox.removeAttribute('style')
     dropBox.appendChild(image);
   };
   reader.readAsDataURL(file);
@@ -69,9 +70,10 @@ btnRenit.addEventListener("click", function (e) {
 
 
 bouttonCreer.addEventListener('click', function (e) {
-
   if (validationAll() === true) {
-let image = document.querySelector('#imgForm')
+    let image = document.querySelector('#imgForm')
+    image.removeAttribute('style')
+    image.setAttribute('style', 'justify-content: center; text-align: center; width:100%; border-radius: 50%; height: 100%')
 
     tab.push({
       Prenom: prenom.value,
@@ -88,7 +90,8 @@ let image = document.querySelector('#imgForm')
     console.log('error');
   }
   console.log(list);
-
+dropBox.appendChild(paragraphePhoto);
+console.log(dropBox);
 });
 
 
@@ -367,7 +370,6 @@ function editContact(index) {
   email.value = tab[index].Email;
   bio.value = tab[index].Bio;
   dropBox.value = tab[index].Photo;
-
   // tab.splice(index, 1);
 
 }
@@ -388,12 +390,12 @@ function showContacts() {
     let divText = document.createElement('div');
     let divBtn = document.createElement('div');
 
-    divImg.innerHTML = element.Photo;
+    divImg.appendChild(element.Photo);
 
     divText.innerHTML = `<span style='font-size:1.3em;'>${element.Prenom + ' ' + element.Nom + ' - ' + element.Groupe}</span>` + '<br>' + `<span style='color: blue'>${element.Telephone}</span>` + '<br>' + `<span style='  display: flex;
       justify-content: start; flex-wrap: wrap;'>${element.Bio}</span>`
 
-    divImg.setAttribute('style', 'justify-content: center; text-align: center; width:15%; flex-grow: 1; border-radius: 50%; border:1px solid black; margin: 1em;')
+    divImg.setAttribute('style', ' width:15%; flex-grow: 1;')
     divText.setAttribute('style', 'display:flex; margin-left: 2em; flex-direction:column; flex-grow: 2; height: 100%; text-align: left; justify-content: center; width:65%;')
     divBtn.setAttribute('style', 'display:flex; flex-direction:row; height: 10%; text-align: flex-grow: 3; right; justify-content: right;');
 
