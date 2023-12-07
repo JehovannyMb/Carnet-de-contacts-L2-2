@@ -73,7 +73,7 @@ bouttonCreer.addEventListener('click', function (e) {
   if (validationAll() === true) {
     let image = document.querySelector('#imgForm')
     image.removeAttribute('style')
-    image.setAttribute('style', 'justify-content: center; text-align: center; width:100%; border-radius: 50%; height: 100%')
+    image.setAttribute('style', 'justify-content: center; text-align: center; width:100%; border-radius: 50%; border: 1px solid black; height: 100%')
 
     tab.push({
       Prenom: prenom.value,
@@ -90,8 +90,8 @@ bouttonCreer.addEventListener('click', function (e) {
     console.log('error');
   }
   console.log(list);
-dropBox.appendChild(paragraphePhoto);
-console.log(dropBox);
+  dropBox.appendChild(paragraphePhoto);
+  console.log(dropBox);
 });
 
 
@@ -369,8 +369,13 @@ function editContact(index) {
   groupe.value = tab[index].Groupe;
   email.value = tab[index].Email;
   bio.value = tab[index].Bio;
-  dropBox.value = tab[index].Photo;
-  // tab.splice(index, 1);
+  console.log(prenom.value);
+  console.log(inputs.value);
+
+  tab.splice(index, 1)
+  // showContacts()
+console.log(prenom.value);
+console.log(inputs.value);
 
 }
 
@@ -400,13 +405,13 @@ function showContacts() {
     divBtn.setAttribute('style', 'display:flex; flex-direction:row; height: 10%; text-align: flex-grow: 3; right; justify-content: right;');
 
     let btnModif = document.createElement('button');
-    btnModif.setAttribute('style', 'width:1em; height:1em; text-align: right;')
+    btnModif.setAttribute('style', 'width:1em; height:1em; text-align: right; background-color: white; border: 1px solid white;')
     btnModif.innerHTML = "<span style='text-align: right;'><img style='width: 100%; height:100%;' src='https://t4.ftcdn.net/jpg/06/04/78/55/240_F_604785541_MbPwS5Hib6h6cEVgrdPh49t88xGOqLuB.jpg' alt='icon modif'/></span>"
     btnModif.setAttribute('id', 'editBtn');
     btnModif.setAttribute('onclick', `editContact(${index})`);
 
     let btnSup = document.createElement('button');
-    btnSup.setAttribute('style', 'width:1em; height:1em; text-align: right;')
+    btnSup.setAttribute('style', 'width:1em; height:1em; text-align: right; background-color: white; border: 1px solid white;')
     btnSup.innerHTML = "<span style='text-align: right;'><img style='width: 100%; height:100%;' src='https://cdn-icons-png.flaticon.com/128/6861/6861362.png' alt='icon suppr'/></span>"
     btnSup.setAttribute('id', 'deleteBtn');
     btnSup.setAttribute('onclick', `deleteContact(${index})`);
@@ -424,6 +429,7 @@ function showContacts() {
     contacts.appendChild(contact)
 
     inputs.forEach((input) => (input.value = ""))
+    bio.value = ""
   })
 
 }
