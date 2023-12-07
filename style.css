@@ -113,7 +113,8 @@ header .nav .title {
 
 .Repertoire .list {
   width: 55%;
-  height: 65vh;
+  height: 100%;
+  overflow: scroll;
 
 }
 

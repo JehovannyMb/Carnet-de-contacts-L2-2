@@ -97,11 +97,7 @@ bouttonCreer.addEventListener('click', function (e) {
 
 function validationPrenom() {
   const form = document.querySelector('form')
-  // form.addEventListener('submit', (event) => {
-  //     event.preventDefault();
-  //     validatePrenom(form.Prenom)
 
-  // })
   return validatePrenom(form.Prenom)
 
   function validatePrenom(item) {
@@ -110,7 +106,7 @@ function validationPrenom() {
 
     if (item.value == "") {
       item.setAttribute('style', 'border: solid red;')
-      prenomError.innerHTML = "<span style= 'color : red'>Veillez renseigner votre prenom</span>"
+      prenomError.innerHTML = "<span style= 'color : red'>Veillez renseigner le prenom</span>"
       return false
     } else {
       if (item.value.length >= 3 && item.value.length <= 50) {
@@ -122,7 +118,7 @@ function validationPrenom() {
           return true
         } else {
           item.setAttribute('style', 'border: solid red;')
-          prenomError.innerHTML = "<span style= 'color : red'> Le caractères doivent être des lettres </span>"
+          prenomError.innerHTML = "<span style= 'color : red'> Les caractères doivent être des lettres </span>"
           item.value.innerHTML = ""
           return false
         }
@@ -141,11 +137,7 @@ function validationPrenom() {
 
 function validationNom() {
   const form = document.querySelector('form')
-  // form.addEventListener('submit', (event) => {
-  //     event.preventDefault();
-  //     validateName(form.Nom)
 
-  // })
   return validateName(form.Nom)
 
   function validateName(item) {
@@ -154,7 +146,7 @@ function validationNom() {
 
     if (item.value == "") {
       item.setAttribute('style', 'border: solid red;')
-      nomError.innerHTML = "<span style= 'color : red'>Veillez renseigner votre nom</span>"
+      nomError.innerHTML = "<span style= 'color : red'>Veillez renseigner le nom</span>"
       return false
     } else {
       if (item.value.length >= 3 && item.value.length <= 50) {
@@ -166,7 +158,7 @@ function validationNom() {
           return true
         } else {
           item.setAttribute('style', 'border: solid red;')
-          nomError.innerHTML = "<span style= 'color : red'> Le caractères doivent être des lettres </span>"
+          nomError.innerHTML = "<span style= 'color : red'> Les caractères doivent être des lettres </span>"
           item.value.innerHTML = ""
           return false
         }
@@ -183,11 +175,7 @@ function validationNom() {
 
 function validationTel() {
   const form = document.querySelector('form')
-  // form.addEventListener('submit', (event) => {
-  //     event.preventDefault();
-  //     validateTelephone(form.Telephone)
 
-  // })
   return validateTelephone(form.Telephone)
 
   function validateTelephone(item) {
@@ -196,7 +184,7 @@ function validationTel() {
 
     if (item.value == "") {
       item.setAttribute('style', 'border: solid red;')
-      telError.innerHTML = "<span style= 'color : red'>Veillez renseigner votre numéro de téléphone</span>"
+      telError.innerHTML = "<span style= 'color : red'>Veillez renseigner le numéro de téléphone</span>"
       return false
     } else {
       if (item.value.length == 10) {
@@ -227,11 +215,7 @@ function validationTel() {
 
 function validationGroupe() {
   const form = document.querySelector('form')
-  // form.addEventListener('submit', (event) => {
-  //     event.preventDefault();
-  //     validateGroupe(form.Groupe)
 
-  // })
   return validateGroupe(form.Groupe)
 
   function validateGroupe(item) {
@@ -240,7 +224,7 @@ function validationGroupe() {
 
     if (item.value == "") {
       item.setAttribute('style', 'border: solid red;')
-      groupeError.innerHTML = "<span style= 'color : red'>Veillez renseigner votre groupe</span>"
+      groupeError.innerHTML = "<span style= 'color : red'>Veillez renseigner le groupe</span>"
       return false
     } else {
 
@@ -253,7 +237,7 @@ function validationGroupe() {
           return true
         } else {
           item.setAttribute('style', 'border: solid red;')
-          groupeError.innerHTML = "<span style= 'color : red'> Le caractères doivent être des lettres </span>"
+          groupeError.innerHTML = "<span style= 'color : red'> Les caractères doivent être des lettres </span>"
           item.value.innerHTML = ""
           return false
         }
@@ -270,11 +254,7 @@ function validationGroupe() {
 
 function validationEmail() {
   const form = document.querySelector('form')
-  // form.addEventListener('submit', (event) => {
-  //     event.preventDefault();
-  //     validateEmail(form.Email)
 
-  // })
   return validateEmail(form.Email)
 
   function validateEmail(item) {
@@ -283,7 +263,7 @@ function validationEmail() {
 
     if (item.value == "") {
       item.setAttribute('style', 'border: solid red;')
-      emailError.innerHTML = "<span style= 'color : red'>Veillez renseigner votre mail</span>"
+      emailError.innerHTML = "<span style= 'color : red'>Veillez renseigner le mail</span>"
       return false
     } else {
 
@@ -296,7 +276,7 @@ function validationEmail() {
           return true
         } else {
           item.setAttribute('style', 'border: solid red;')
-          emailError.innerHTML = "<span style= 'color : red'> Le caractères doivent être des lettres </span>"
+          emailError.innerHTML = "<span style= 'color : red'> Les caractères doivent être des lettres </span>"
           item.value.innerHTML = ""
           return false
         }
@@ -313,11 +293,7 @@ function validationEmail() {
 
 function validationBio() {
   const form = document.querySelector('form')
-  // form.addEventListener('submit', (event) => {
-  //     event.preventDefault();
-  //     validateBio(form.Bio)
 
-  // })
   return validateBio(form.Bio)
 
   function validateBio(item) {
@@ -326,7 +302,7 @@ function validationBio() {
 
     if (item.value == "") {
       item.setAttribute('style', 'border: solid red;')
-      bioError.innerHTML = "<span style= 'color : red'>Veillez renseigner votre biographie</span>"
+      bioError.innerHTML = "<span style= 'color : red'>Veillez renseigner la biographie</span>"
       return false
     } else {
 
@@ -340,7 +316,7 @@ function validationBio() {
 
         } else {
           item.setAttribute('style', 'border: solid red;')
-          bioError.innerHTML = "<span style= 'color : red'> Le caractères doivent être des lettres </span>"
+          bioError.innerHTML = "<span style= 'color : red'> Les caractères doivent être des lettres </span>"
           item.value.innerHTML = ""
 
         }
