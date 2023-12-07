@@ -7,10 +7,35 @@ email = document.querySelector("#Email");
 bio = document.querySelector("#Bio");
 file = document.querySelector("#uploadFile");
 bouttonCreer = document.querySelector('.creer');
-list = document.querySelector(".list");
+listeContact = document.querySelector(".list");
 icon_btn = document.querySelector(".list_btn")
+dropBox = document.querySelector('.dropBox')
 let inputs = document.querySelectorAll("input")
 let btnRenit = document.querySelector('.renit')
+
+// let repertoire = getContacts();
+// let imgPhoto = document.createElement('img');
+// imgPhoto.setAttribute('src', `${file.value}`);
+// imgPhoto.setAttribute('alt', 'Photo du contact');
+// imgPhoto.setAttribute('style', 'border-radius: 50%; border:1px solid black; margin: 1em;');
+let repertoire = getContacts()
+let monObjet = {
+    Prenom: prenom.value,
+    Nom: nom.value,
+    Telephone: telephone.value,
+    Groupe: groupe.value,
+    Email: email.value,
+    Bio: bio.value,
+    Photo: function () {
+        let file = new FileReader ();
+        let image = document.createElement('img')
+        file.readAsDataURL(upLoad.files[0])
+        image.src = file.result
+      
+        image.src = URL.createObjectURL(upLoad.files[0]);
+          return image;
+        }
+}
 
 
 
@@ -34,74 +59,10 @@ bouttonCreer.addEventListener('click', function () {
     console.log(file.value);
 
     if (validationAll() === true) {
-
-        let imgPhoto = document.createElement('img');
-        imgPhoto.setAttribute('src', `${file.value}`);
-        imgPhoto.setAttribute('alt', 'Photo du contact');
-        imgPhoto.setAttribute('style', 'border-radius: 50%; border:1px solid black; margin: 1em;');
-
-        console.log(imgPhoto);
-        let tab = [];
-        let monObjet = {
-            Prenom: prenom.value,
-            Nom: nom.value,
-            Telephone: telephone.value,
-            Groupe: groupe.value,
-            Email: email.value,
-            Bio: bio.value,
-            Photo: imgPhoto,
-        }
-
-        let divImg = document.createElement('div');
-        let divText = document.createElement('div');
-        let divBtn = document.createElement('div');
-
-        divImg.innerHTML = monObjet.Photo;
-        divText.innerHTML = `<span style='font-size:1.3em;'>${monObjet.Prenom + ' ' + monObjet.Nom + ' - ' + monObjet.Groupe}</span>` + '<br>' + `<span style='color: blue'>${monObjet.Telephone}</span>` + '<br>' + `<span style='  display: flex;
-        justify-content: start; flex-wrap: wrap;'>${monObjet.Bio}</span>`
-
-        divImg.setAttribute('style', 'justify-content: top; position: absolute; text-align: center; width:15%; flex-grow: 1;')
-        divText.setAttribute('style', 'display:flex; margin-left: 2em; flex-direction:column; flex-grow: 2; height: 100%; text-align: left; justify-content: center; width:65%;')
-        divBtn.setAttribute('style', 'display:flex; flex-direction:row; height: 10%; text-align: flex-grow: 3; right; justify-content: right;');
-
-
-
-        let btnModif = document.createElement('button');
-        btnModif.setAttribute('style', 'width:1em; height:1em; text-align: right;')
-        btnModif.innerHTML = "<span style='text-align: right;'><img style='width: 100%; height:100%;' src='https://t4.ftcdn.net/jpg/06/04/78/55/240_F_604785541_MbPwS5Hib6h6cEVgrdPh49t88xGOqLuB.jpg' alt='icon modif'/></span>"
-        btnModif.setAttribute('id', 'editBtn');
-
-        let btnSup = document.createElement('button');
-        btnSup.setAttribute('style', 'width:1em; height:1em; text-align: right;')
-        btnSup.innerHTML = "<span style='text-align: right;'><img style='width: 100%; height:100%;' src='https://cdn-icons-png.flaticon.com/128/6861/6861362.png' alt='icon suppr'/></span>"
-        btnSup.setAttribute('id', 'deleteBtn');
-
-        divBtn.appendChild(btnModif);
-        divBtn.appendChild(btnSup);
-
-        let contact = document.createElement('div');
-        contact.setAttribute('style', 'display:flex; flex-direction:row; border: 1px solid #C4C4C4;  height: 18vh;justify-content: space-between;');
-        contact.appendChild(imgPhoto);
-        contact.setAttribute('id', 'NumeroDeContact');
-
-        contact.appendChild(divText);
-        contact.appendChild(divBtn);
-
-
-        tab.push(monObjet);
-        tab.push(contact);
-
-        console.log(tab);
-        list.setAttribute('style', 'display: flex; flex-direction: column;')
-        list.appendChild(contact);
-        inputs.forEach((input) => (input.value = ""))
-
-        console.log(contact);
-        console.log(list);
-        console.log(tab.length);
-        editContact(monObjet)
-        deleteContact(tab)
-
+       repertoire.push(monObjet);
+       saveContacts(repertoire)
+       showContacts()
+        
     }
     else {
         console.log('error');
@@ -392,9 +353,67 @@ function editContact(monObjet) {
     })
     console.log('function1');
 }
+function showContacts() {
+    let infoContact = document.createElement("div");
+    let profil = document.createElement("img");
+    profil.setAttribute(
+      "style",
+      " width : 160px ; height : 160px ; margin : 0 30px ; border : 1px solid ; border-radius : 50%"
+    );
+    profil.src = `${monObjet.Photo}`;
+    profil.src = URL.createObjectURL(file.files[0])
+    let info = document.createElement("div");
+    let NGP = document.createElement("p");
+    NGP.setAttribute(
+      "style",
+      "width : 680px ; height : 20px ; position : relative ; padding : 25px 40px"
+    );
+    NGP.innerHTML = `${
+      monObjet.Prenom + " " + monObjet.Nom + "-" + monObjet.Groupe
+    }`;
+    let btns = document.createElement("span");
+    btns.innerHTML = `<button onclick= editContact() class="edit" style = "width : 23px ; border : none ; height : 23px ; position : absolute ; right : 47px ">
+<img style='width: 100%; height:100%' src='https://t4.ftcdn.net/jpg/06/04/78/55/240_F_604785541_MbPwS5Hib6h6cEVgrdPh49t88xGOqLuB.jpg' alt='icon modif'/>
+</button>
+<button onclick= deleteContact() class="Delete" style = "width : 21px ; height : 21px ; border : none ; position : absolute ; right : 15px" >
+<img style='width: 100%; height:100%;' src='https://cdn-icons-png.flaticon.com/128/6861/6861362.png' alt='icon suppr'/>
+</button>`;
+    NGP.appendChild(btns);
+    let Num = document.createElement("p");
+    Num.setAttribute(
+      "style",
+      "width : 400px ; padding : 20px 40px ; height : 20px"
+    );
+    Num.innerHTML = monObjet.Telephone;
+    let Bio = document.createElement("p");
+    Bio.setAttribute(
+      "style",
+      "width : 400px ; padding : 20px 40px ; height : 20px"
+    );
+    Bio.innerHTML = monObjet.Bio;
+    let photos = document.createElement("img");
+    photos.setAttribute(
+      "style",
+      " width : 160px ; height : 160px ; margin : 0 30px ; border : 1px solid ; border-radius : 50%"
+    );
+    info.appendChild(NGP);
+    info.appendChild(Num);
+    info.appendChild(Bio);
+    infoContact.appendChild(profil);
+    infoContact.appendChild(info);
+    infoContact.setAttribute(
+      "style",
+      " display: inline-flex ; flex-wrap : wrap ; margin : 20px 0 "
+    );
+    listeContact.appendChild(infoContact);
+    listeContact.setAttribute("style",
+    "  overflow: scroll")
+
+  
+}
 
 
-function deleteContact(tab) {
+function deleteContact(repertoire) {
     let deleteBtn = document.querySelector('#deleteBtn');
     // let numeroDeContact = document.querySelector('#numeroDeContact');
 
@@ -419,47 +438,78 @@ parent.removeChild(deleteBtn);
 // function showContacts() {
 
 // }
-  console.log(prenom.value);
-  let tab = document.createElement('div');
-  tab.innerHTML = dropBox.value + "\n" + prenom.value + nom.value + groupe.value + telephone.value + bio.value
-
-  list.appendChild(tab);
-  console.log(tab);
-  let imgElement = document.createElement('div')
+//   console.log(prenom.value);
+//   let tab = document.createElement('div');
+//   tab.innerHTML = dropBox.value + "\n" + prenom.value + nom.value + groupe.value + telephone.value + bio.value
+//   list.appendChild(tab);
+//   console.log(tab);
+//   let imgElement = document.createElement('div')
   // imgElement.setAttribute('style', 'width: 25%; height: 25vh; border-radius: 50%; border: 1px solid black');
 
-  tab.setAttribute('style', 'width: 25%; height: 25vh; border-radius: 50%; border: 1px solid black; text-align: center; padding-top: 5em;');
+  //tab.setAttribute('style', 'width: 25%; height: 25vh; border-radius: 50%; border: 1px solid black; text-align: center; padding-top: 5em;');
 
-  tab.innerHTML = imgElement
+  //tab.innerHTML = imgElement
   // list.appendChild(imgElement)
-  imgElement.appendChild(dropBox.value)
-  let
+//   imgElement.appendChild(dropBox.value)
+//  saveContacts(tab)
 
-;
+// ;
 // addContact()
 
-
+file.addEventListener("change", (e) => {
+    e.preventDefault();
+  
+    const file = file.files[0];
+    const image = document.createElement("img");
+    image.setAttribute(
+      "style",
+      "justify-content : center ; position : absolute ; top : 20px ; right : 200px ; width : 300px "
+    );
+    const reader = new FileReader();
+    reader.onload = (e) => {
+      image.src = URL.createObjectURL(file.files[0]);
+      imgPhoto = URL.createObjectURL(file.files[0]);
+      dropBox.appendChild(image);
+      dropBox.setAttribute("style", "position : relative");
+    };
+  
+    reader.readAsDataURL(file);
+  });
 
 // Fonction d'affichage d'image
 const dropBoximg = document.querySelector('.dropBox');
 const uploadFile = document.getElementById('uploadFile');
 
 // Écouter l'événement de déposer
-dropBox.addEventListener('change', (e) => {
-  e.preventDefault();
-  console.log('dropped');
-  const file = e.target.files[0];
-  const image = document.createElement('img');
+// dropBox.addEventListener('change', (e) => {
+//   e.preventDefault();
+//   console.log('dropped');
+//   const file = e.target.files[0];
+//   const image = document.createElement('img');
 
-  const reader = new FileReader();
+//   const reader = new FileReader();
 
-  reader.onload = (e) => {
-    image.src = e.target.result;
-    dropBoximg.appendChild(image);
-  };
-  reader.readAsDataURL(file);
+//   reader.onload = (e) => {
+//     image.src = e.target.result;
+//     dropBoximg.appendChild(image);
+//   };
+//   reader.readAsDataURL(file);
 
-});
+// });
+file.addEventListener('change', (e) =>{
+      e.preventDefault()
+      
+      const file = e.target.files[0];
+      const image = document.createElement('img')
+      image.setAttribute('style', 'justify-content : center ; position : absolute ; top : 20px ; right : 200px ; width : 300px ')
+      const reader = new FileReader();
+      reader.onload = (e) => {
+        image.src = e.target.result;
+        dropBox.appendChild(image)
+        dropBox.setAttribute('style', 'position : relative')
+      }
+      reader.readAsDataURL(file)
+    })
 
 // Empêcher le comportement par défaut du navigateur pour les événements de glisser-déposer
 dropBox.addEventListener('dragover', (e) => {
@@ -478,134 +528,15 @@ function afficherInformations() {
 
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// let prenom, nom, telephone, groupe, email, bio, dropBox, creer, bouttonCreer, list, icon_btn;
-// prenom = document.querySelector("#Prenom");
-// nom = document.querySelector("#Nom");
-// telephone = document.querySelector("#Telephone");
-// groupe = document.querySelector("#Groupe");
-// email = document.querySelector("#Email");
-// bio = document.querySelector("#Bio");
-// dropBox = document.querySelector(".dropBox");
-// bouttonCreer = document.querySelector('.creer');
-// list = document.querySelector(".list");
-// icon_btn = document.querySelector(".list_btn")
-
-// console.log(prenom.value);
-// bouttonCreer.addEventListener('click', function () {
-//     console.log(prenom.value);
-//     let tab = document.createElement('div');
-//     tab.innerHTML = dropBox.value + "\n" + prenom.value + nom.value + groupe.value + telephone.value + bio.value
-
-//     list.appendChild(tab);
-//     console.log(tab);
-//     let imgElement = document.createElement('div')
-//     imgElement.setAttribute('style', 'width: 75%; height: 18vh; border-radius: 50%; border: 1px solid black');
-
-//     list.appendChild(imgElement)
-//     imgElement.appendChild(dropBox.value)
-//     let 
-
-
-// });
-// addContact()
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// document.getElementById("boutonAjouter").addEventListener("click", function () {
-//   let input = document.createElement("input");
-//   input.type = "file";
-
-//   input.onchange = function (e) {
-//     let file = e.target.files[0];
-//     let reader = new FileReader();
-
-//     reader.onload = function () {
-
-//       // Créez une balise <img> pour afficher l'image
-//       let img = document.createElement("img");
-//       img.src = reader.result;
-
-
-//       // Ajoutez l'image au carnet de contacts
-//       document.getElementById("carnetContacts").appendChild(img);
-//     };
-
-//     reader.readAsDataURL(file);
-//   };
-
-//   input.click();
-// });
-
-
-
-
-// }
-// function getData(newContact) {
-//     const getData = createElement('div');
-// }
-
+function saveContacts(contact) {
+    console.log("save");
+    localStorage.setItem("contact", JSON.stringify(contact));
+}
+
+function getContacts() {
+    //  localStorage.clear()
+    let contacts = localStorage.getItem("tasks")
+    return contacts ? JSON.parse(contacts) : [];
+    
+ }
 
