@@ -339,6 +339,14 @@ function validationAll() {
 function editContact(index) {
   console.log('tab', tab);
 
+  let bouttonModifier = document.querySelector('#bouttonModifier');
+  let bouttonAnnuler = document.querySelector('#bouttonAnnuler')
+  bouttonModifier.removeAttribute('hidden')
+  bouttonAnnuler.removeAttribute('hidden')
+
+  bouttonCreer.setAttribute('hidden', 'true');
+  btnRenit.setAttribute('hidden', 'true');
+
   prenom.value = tab[index].Prenom;
   nom.value = tab[index].Nom;
   telephone.value = tab[index].Telephone;
@@ -348,13 +356,63 @@ function editContact(index) {
   console.log(prenom.value);
   console.log(inputs.value);
 
-  tab.splice(index, 1)
-  // showContacts()
+  bouttonModifier.addEventListener('click', function () {
+    let image = document.querySelector('#imgForm')
+    image.removeAttribute('style')
+    image.setAttribute('style', 'justify-content: center; text-align: center; width:100%; border-radius: 50%; border: 1px solid #C4C4C4; height: 100%')
+
+    let prenom, nom, telephone, groupe, email, bio;
+    prenom = document.querySelector("#Prenom");
+    nom = document.querySelector("#Nom");
+    telephone = document.querySelector("#Telephone");
+    groupe = document.querySelector("#Groupe");
+    email = document.querySelector("#Email");
+    bio = document.querySelector("#Bio");
+
+
+    
+    // tab[index].Prenom = prenom.value
+    // tab[index].Nom = nom.value;
+    // tab[index].Telephone = telephone.value;
+    // tab[index].Groupe = groupe.value;
+    // tab[index].Email = email.value;
+    // tab[index].Bio = bio.value;
+    // tab[index].Photo = image;
+
+    console.log(prenom.value);
+    tab.splice(index, 1, {
+      Prenom: prenom.value,
+      Nom: nom.value,
+      Telephone: telephone.value,
+      Groupe: groupe.value,
+      Email: email.value,
+      Bio: bio.value,
+      Photo: image,
+    });
+    bouttonModifier.setAttribute('hidden', 'true');
+    bouttonAnnuler.setAttribute('hidden', 'true');
+
+    bouttonCreer.removeAttribute('hidden');
+    btnRenit.removeAttribute('hidden');
+    dropBox.appendChild(paragraphePhoto);
+    showContacts()
+
+
+  })
+  bouttonAnnuler.addEventListener('click', function () {
+    bouttonModifier.setAttribute('hidden', 'true');
+    bouttonAnnuler.setAttribute('hidden', 'true');
+
+    bouttonCreer.removeAttribute('hidden');
+    btnRenit.removeAttribute('hidden');
+    inputs.forEach((input) => (input.value = ""))
+    bio.value = ""
+
+  })
   console.log(prenom.value);
   console.log(inputs.value);
 
 }
-
 
 function deleteContact(index) {
   if (validationBtnSupprimer()) {
