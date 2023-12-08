@@ -73,7 +73,7 @@ bouttonCreer.addEventListener('click', function (e) {
   if (validationAll() === true) {
     let image = document.querySelector('#imgForm')
     image.removeAttribute('style')
-    image.setAttribute('style', 'justify-content: center; text-align: center; width:100%; border-radius: 50%; border: 1px solid black; height: 100%')
+    image.setAttribute('style', 'justify-content: center; text-align: center; width:100%; border-radius: 50%; border: 1px solid #C4C4C4; height: 100%')
 
     tab.push({
       Prenom: prenom.value,
@@ -306,7 +306,7 @@ function validationBio() {
       return false
     } else {
 
-      if (item.value.length >= 3 && item.value.length <= 2500) {
+      if (item.value.length >= 3 && item.value.length <= 100) {
         item.removeAttribute('style')
 
         if (regex.test(item.value)) {
@@ -323,7 +323,7 @@ function validationBio() {
 
       } else {
         item.setAttribute('style', 'border: solid red;')
-        bioError.innerHTML = "<span style= 'color : red'> Le champ doit contenir entre 3 et 2500 caractères</span>"
+        bioError.innerHTML = "<span style= 'color : red'> Le champ doit contenir entre 3 et 100 caractères</span>"
         return false
       }
     }
@@ -350,17 +350,29 @@ function editContact(index) {
 
   tab.splice(index, 1)
   // showContacts()
-console.log(prenom.value);
-console.log(inputs.value);
+  console.log(prenom.value);
+  console.log(inputs.value);
 
 }
 
 
 function deleteContact(index) {
-  tab.splice(index, 1);
-  showContacts()
+  if (validationBtnSupprimer()) {
+    tab.splice(index, 1);
+    showContacts()
+  }
 }
-
+function validationBtnSupprimer() {
+  let confirmation = prompt('Souhaitez-vous vraiment supprimer ce contact?' + '\n' + 'Tapez 1 pour confirmer' + '\n' + 'Tapez 2 pour annuler');
+  if (confirmation == 1) {
+    return true
+  } else if (confirmation == 2) {
+    return false
+  } else {
+    alert('Votre reponse est invalide')
+    return false
+  }
+}
 function showContacts() {
   console.log('show');
   contacts.innerHTML = ''
@@ -376,9 +388,9 @@ function showContacts() {
     divText.innerHTML = `<span style='font-size:1.3em;'>${element.Prenom + ' ' + element.Nom + ' - ' + element.Groupe}</span>` + '<br>' + `<span style='color: blue'>${element.Telephone}</span>` + '<br>' + `<span style='  display: flex;
       justify-content: start; flex-wrap: wrap;'>${element.Bio}</span>`
 
-    divImg.setAttribute('style', ' width:15%; flex-grow: 1;')
+    divImg.setAttribute('style', ' width:15%; flex-grow: 1; margin: 1.5em;')
     divText.setAttribute('style', 'display:flex; margin-left: 2em; flex-direction:column; flex-grow: 2; height: 100%; text-align: left; justify-content: center; width:65%;')
-    divBtn.setAttribute('style', 'display:flex; flex-direction:row; height: 10%; text-align: flex-grow: 3; right; justify-content: right;');
+    divBtn.setAttribute('style', 'display:flex; flex-direction:row; height: 10%; margin-top: 2em; margin-right: 2em; text-align: flex-grow: 3; right; justify-content: right;');
 
     let btnModif = document.createElement('button');
     btnModif.setAttribute('style', 'width:1em; height:1em; text-align: right; background-color: white; border: 1px solid white;')
