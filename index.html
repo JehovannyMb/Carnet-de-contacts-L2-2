@@ -18,7 +18,7 @@
   <div class="Repertoire">
     <section class="formulaire">
       <p class="form-title">Formulaire de contact</p>
-      <form accept="text" method="dialog">
+      <form accept="text" name="formulaire" action="\" novalidate>
         <label for="Prenom">Prénom</label>
         <input type="text" id="Prenom" name="Prenom"/>
         <p class="error" id="prenomError"></p>
@@ -44,8 +44,9 @@
         <p class="error" id="bioError"></p>
 
         <div class="dropBox">
-          <p id="paragraphePhoto">Déposez la photo ici <input draggable="true" type="file" id="uploadFile" /></p>
+          <p id="paragraphePhoto">Déposez la photo ici <input draggable="true" name="photo" type="file" id="uploadFile" /></p>
         </div>
+        <p class="erreurFormat"></p>
         <button class="creer" id="bouttonModofier">Créer</button>
         <button class="renit" id="bouttonSupprimer">Rénit</button>
       </form>
