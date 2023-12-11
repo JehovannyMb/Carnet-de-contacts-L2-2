@@ -332,8 +332,7 @@ function validationBio() {
 }
 
 function validationAll() {
-  const returns = validationPrenom() && validationNom() && validationTel() && validationGroupe() && validationEmail() && validationBio() 
-  // && validationFile()
+  const returns = validationPrenom() && validationNom() && validationTel() && validationGroupe() && validationEmail() && validationBio()
   return returns
 }
 
@@ -481,43 +480,6 @@ function showContacts() {
 
 }
 
-// function validationFile() {
-//   const form = document.querySelector("form");
-//   return validateFile(form.uploadFile);
-//   function validateFile() {
-//     let erreur = document.querySelector(".erreurFormat");
-//     let fileImage = document.forms["formulaire"]["photo"];
-//     let filePath = fileImage.value;
-//     let validImageExt = /[\.jpg| \.jpeg| \.png]$/;
-//     if (!validImageExt.exec(filePath)) {
-//       // image.value = "";
-//       erreur.innerText = "Format requis : PNG , JPEG, JPG ";
-//       erreur.setAttribute("style", "visibility: visible ; color : #ff3838 ");
-//       dropBox.setAttribute("style", "border : solid #ff3838");
-//       return false;
-//     } else {
-//       if (fileImage.files && fileImage.files[0]) {
-//         let reader = new FileReader();
-//         reader.onload = (e) => {
-//           let image = document.createElement("img");
-//           image.setAttribute(
-//             "style",
-//             "  width: 100%; height: 100%; top : 0 ; left : 0 ;position: absolute; text-align: center; border: dashed 1px #918585;"
-//           );
-//           image.setAttribute("id", "imgForm");
-//           image.src = e.target.result;
-//           // imgPhoto = URL.createObjectURL(image.files[0]);
-//           dropBox.appendChild(image);
-//           dropBox.setAttribute("style", "position : relative");
-//           erreur.setAttribute("style", "visibility: hidden");
-
-//         };
-//         reader.readAsDataURL(fileImage.files[0]);
-//         return true;
-//       }
-//     }
-//   }
-// }
 
 
 
